@@ -14,7 +14,7 @@ define(function () {
         element = element || document.createElement('div');
         this.element = element instanceof $ ? element.get(0) : element;
         this.$element = element instanceof $ ? element : $(element);
-        this.$element.empty();
+        //this.$element.empty();
     };
 
     Region.prototype.attach = function region_attach(element) {
