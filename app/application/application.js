@@ -23,24 +23,42 @@ define(function(require){
 
 		self.region.setElement($body.find($("#app-main")));
 		self.region.screen = self;
-
-
-
-		
 		contentRegion.setElement(self.region.$element.find($("#app-content")));
-		console.log(contentRegion);
+
+		// sammy
+		_.defer(function(){
+			self.sammyInit();
+		});
+
 		//set content region
 		self.conductor.append(self, contentRegion, example_vm);
+
+
 		
     };
 
-    Application.prototype.LayoutInit = function activate($body) {
+    Application.prototype.sammyInit = function init_sammy(){
+    	var self = this,
+    		app = Sammy(function(){
+    			this.get("main" , function (argument) {
+    				// body...
+    				console.log('sammy');
+    			});
+
+    		});
+
+    		app.run("/#");
+    };
+
+    Application.prototype.LayoutInit = function init_layout($body) {
         var self = this;
 
 		var headerDiv = React.createElement('div' , {className:'app-header-div'} , 'header'),
-			contentDiv = React.createElement('div' , {className:'app-content-div' , id:'app-content'} , 'content');
+			button = React.createElement('a' , {href:'/#main'} , 'button'),
+			button2 = React.createElement('a' , {href:'/#main2'} , 'button2'),
+			contentDiv = React.createElement('div' , {className:'app-content-div' , id:'app-content'});
 
-		var	appMainDiv = React.createElement('div' , {id:'app-main'} , headerDiv , contentDiv);
+		var	appMainDiv = React.createElement('div' , {id:'app-main'} , headerDiv , contentDiv , button);
 
         React.render(appMainDiv , $body[0]);
     };

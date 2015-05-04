@@ -3,6 +3,7 @@ define(function(require){
 	window.$ = require("jquery");
 	window._ = require("lodash");
 	window.React = require("react");
+	window.Sammy = require('sammy');
 
 	require(['system/base/object'] , function(){
 		require(['application/application'] , function(Application){

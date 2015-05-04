@@ -7,6 +7,7 @@
 			lodash:'../build/lv1/lodash',
 
 			react:'../build/lv2/react_0_13_2',
+			sammy:'../build/lv2/sammy.min',
 		},
 
 	};
