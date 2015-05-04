@@ -20,6 +20,9 @@ node.js
 
 express.js
 
+mangoose.js
+
+mangoDB - for convienience api structure
 
 
 
