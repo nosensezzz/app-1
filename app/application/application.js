@@ -40,14 +40,17 @@ define(function(require){
     Application.prototype.sammyInit = function init_sammy(){
     	var self = this,
     		app = Sammy(function(){
-    			this.get("main" , function (argument) {
+    			this.get("/#main" , function (argument) {
     				// body...
     				console.log('sammy');
     			});
 
+    			this.notFound = function not_found (argument) {
+    				// body...
+    			}
     		});
 
-    		app.run("/#");
+    		app.run("");
     };
 
     Application.prototype.LayoutInit = function init_layout($body) {
@@ -55,10 +58,10 @@ define(function(require){
 
 		var headerDiv = React.createElement('div' , {className:'app-header-div'} , 'header'),
 			button = React.createElement('a' , {href:'/#main'} , 'button'),
-			button2 = React.createElement('a' , {href:'/#main2'} , 'button2'),
+			footerDiv = React.createElement('div' , {className:'app-footer-div'} , 'footer' , button),
 			contentDiv = React.createElement('div' , {className:'app-content-div' , id:'app-content'});
 
-		var	appMainDiv = React.createElement('div' , {id:'app-main'} , headerDiv , contentDiv , button);
+		var	appMainDiv = React.createElement('div' , {id:'app-main'} , headerDiv , contentDiv , footerDiv);
 
         React.render(appMainDiv , $body[0]);
     };

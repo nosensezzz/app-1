@@ -10,28 +10,6 @@ define(function(require){
 		var self = this;
 		self.region.$element.attr("id", "login-shell");
 
-		// example
-		var Timer = React.createClass({displayName: "Timer",
-		  getInitialState: function() {
-		    return {secondsElapsed: 0};
-		  },
-		  tick: function() {
-		    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
-		  },
-		  componentDidMount: function() {
-		    this.interval = setInterval(this.tick, 1000);
-		  },
-		  componentWillUnmount: function() {
-		    clearInterval(this.interval);
-		  },
-		  render: function() {
-		    return (
-		      React.createElement("div", null, "Seconds Elapsed: ", this.state.secondsElapsed)
-		    );
-		  }
-		});
-
-
 		var button3 = React.createElement('a' , {href:'/#main3'} , 'button3');
 		var	appMainDiv = React.createElement('div' , {id:'example-button'} , button3);
 		React.render(appMainDiv, self.region.element);
@@ -47,14 +25,12 @@ define(function(require){
 		// body...
 		var app = Sammy(function(){
 
-    			this.get("main3" , function (argument) {
+    			this.get("/#main3" , function (argument) {
     				// body...
     				console.log('33333');
     			});
 
     		});
-
-    		app.run("/#");
     			
 	}
 
