@@ -9,22 +9,23 @@ define(function () {
 
     Conduction.prototype.append = function append(parent , parentRegion ,child , childRegion) {
         var self = this;
-   
         if(!childRegion){
             var childRegion = Object.resolve(Region),
                 newReactElement = React.createElement("div" , {className:"region" , id: "_region"});
 
-            React.render(newReactElement,parentRegion.element);
+            parentRegion.$element.empty();
 
+            React.render(newReactElement,parentRegion.element);
             childRegion.setElement(parentRegion.$element.find($("#_region")));
-            child.region = childRegion;
             childRegion.screen = child;
+
+            child.region = childRegion;
         } else {
             child.region = childRegion;
             childRegion.screen = child;
         }
 
-        child.ready();
+        child.ready(parent , child);
     };
 
     return Conduction;
