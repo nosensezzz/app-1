@@ -25,4 +25,13 @@ mangoose.js
 mangoDB - for convienience api structure
 
 
+// client side set up steps
+1.you need start a server to run client app
+
+python simple httpserver on mac
+iis on windows
+
+2.you need install react-tools to continue build dev folder to pruduct folder, you can write non-jsx react.js in product file, but I DO NOT RECOMMEND YOU DO THAT.
+( or you can simple include jsxtransformer, but for everyone not run build from dev to product, you need be really careful when you fetch or push to master)
+
 
