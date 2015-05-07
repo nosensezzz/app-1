@@ -25,7 +25,7 @@ mangoose.js
 mangoDB - for convienience api structure
 
 
-// client side set up steps
+# // client side set up steps
 1.you need start a server to run client app
 
 python simple httpserver on mac
