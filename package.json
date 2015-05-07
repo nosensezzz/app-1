@@ -1,0 +1,23 @@
+{
+  "name": "app-1",
+  "version": "1.0.0",
+  "description": "it's a simple app used to test structure, anyone want to learn a customized framework based on listed framework are welcome to join and learn.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "jsx --watch dev/ product/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nosensezzz/app-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nosensezzz/app-1/issues"
+  },
+  "homepage": "https://github.com/nosensezzz/app-1#readme",
+  "devDependencies": {
+    "react-tools": "^0.13.2"
+  }
+}
