@@ -26,28 +26,12 @@ define(function(require){
 	user_shell_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
 
-		var LikeButton = React.createClass({displayName: "LikeButton",
-		  getInitialState: function() {
-		    return {liked: false};
-		  },
-		  handleClick: function(event) {
-		    this.setState({liked: !this.state.liked});
-		    $.get('http://localhost:3001/api/products', function(result) {
-		    	console.log(result);
-		    });
-
-		  },
-		  render: function() {
-		    var text = this.state.liked ? 'like' : 'haven\'t liked';
-		    return (
-		      React.createElement("p", {onClick: this.handleClick}, 
-		        "You ", text, " this. Click to toggle."
-		      )
-		    );
-		  }
-		});
-
-		React.render(React.createElement(LikeButton, null)	, self.region.element);
+		React.render(
+			React.createElement("div", null, 
+				"user module", 
+				React.createElement("button", null, "api")
+			)
+			, self.region.element);
 	}
 
 	user_shell_vm.prototype.sammyInit = function init_sammy (argument) {

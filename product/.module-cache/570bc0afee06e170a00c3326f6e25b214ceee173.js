@@ -32,7 +32,7 @@ define(function(require){
 		  },
 		  handleClick: function(event) {
 		    this.setState({liked: !this.state.liked});
-		    $.get('http://localhost:3001/api/products', function(result) {
+		    $.get('localhost:3001', function(result) {
 		    	console.log(result);
 		    });
 

@@ -25,8 +25,29 @@ define(function(require){
 
 	user_shell_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
-		var	appMainDiv = React.createElement('div' , {id:'user-main-div'} , 'you are at user module!' );
-		React.render(appMainDiv, self.region.element);
+
+		var LikeButton = React.createClass({
+		  getInitialState: function() {
+		    return {liked: false};
+		  },
+		  handleClick: function(event) {
+		    this.setState({liked: !this.state.liked});
+		    $.get('http://localhost:3001/api/products', function(result) {
+		    	console.log(result);
+		    });
+
+		  },
+		  render: function() {
+		    var text = this.state.liked ? 'like' : 'haven\'t liked';
+		    return (
+		      <p onClick={this.handleClick}>
+		        You {text} this. Click to toggle.
+		      </p>
+		    );
+		  }
+		});
+
+		React.render(<LikeButton />	, self.region.element);
 	}
 
 	user_shell_vm.prototype.sammyInit = function init_sammy (argument) {

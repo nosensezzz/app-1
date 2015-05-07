@@ -32,10 +32,8 @@ define(function(require){
 		  },
 		  handleClick: function(event) {
 		    this.setState({liked: !this.state.liked});
-		    $.get('http://localhost:3001/api/products', function(result) {
-		    	console.log(result);
-		    });
 
+		    
 		  },
 		  render: function() {
 		    var text = this.state.liked ? 'like' : 'haven\'t liked';

@@ -8,7 +8,6 @@ define(function(require){
 		LobbyModule = require('lobby/lobby-shell-view-model'),
 		UserModule = require('user/user-shell-view-model');
 
-
 	function Application(conductor){
 		this.conductor = new Conductor();
 
@@ -35,9 +34,6 @@ define(function(require){
 		_.defer(function(){
 			self.sammyInit();
 		});
-
-		//set content region
-		self.conductor.append(self, self.contentRegion, self.lobbyModule);
 		
     };
 
