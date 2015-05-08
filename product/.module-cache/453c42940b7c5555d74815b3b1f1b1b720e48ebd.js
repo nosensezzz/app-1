@@ -2,9 +2,9 @@ define(function(require){
 	'use strict';
 
 	var Region = require('system/spa/region'),
-		Conductor = require('system/spa/conductor');
+		Conductor = require('system/spa/conductor'),
 
-	require('./views/user-login-react');
+		test = require('./views/test-react');
 
 	function user_shell_vm(){
 		this.parent = null;
@@ -28,7 +28,7 @@ define(function(require){
 	user_shell_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
 
-		React.render(React.createElement(UserLogin, null)	, self.region.element);
+		React.render(React.createElement(App, null)	, self.region.element);
 	}
 
 	user_shell_vm.prototype.sammyInit = function init_sammy (argument) {

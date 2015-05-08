@@ -4,6 +4,8 @@ define(function(require){
 	var Region = require('system/spa/region'),
 		Conductor = require('system/spa/conductor');
 
+	require('./views/user-login-react');
+
 	function user_shell_vm(){
 		this.parent = null;
 		this.region = Object.resolve(Region);
@@ -26,28 +28,7 @@ define(function(require){
 	user_shell_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
 
-		var LikeButton = React.createClass({
-		  getInitialState: function() {
-		    return {liked: false};
-		  },
-		  handleClick: function(event) {
-		    this.setState({liked: !this.state.liked});
-		    $.get('http://localhost:3001/api/products', function(result) {
-		    	console.log(result);
-		    });
-
-		  },
-		  render: function() {
-		    var text = this.state.liked ? 'like' : 'haven\'t liked';
-		    return (
-		      <p onClick={this.handleClick}>
-		        You {text} this. Click to toggle.
-		      </p>
-		    );
-		  }
-		});
-
-		React.render(<LikeButton />	, self.region.element);
+		React.render(<UserLogin />	, self.region.element);
 	}
 
 	user_shell_vm.prototype.sammyInit = function init_sammy (argument) {
@@ -55,7 +36,6 @@ define(function(require){
 		var app = Sammy(function(){
 
     		});
-    			
 	}
 
 	return user_shell_vm;

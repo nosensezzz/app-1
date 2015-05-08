@@ -2,9 +2,9 @@ define(function(require){
 	'use strict';
 
 	var Region = require('system/spa/region'),
-		Conductor = require('system/spa/conductor');
+		Conductor = require('system/spa/conductor'),
 
-	require('./views/user-login-react');
+		views = require('./views/user-login-react');
 
 	function user_shell_vm(){
 		this.parent = null;
