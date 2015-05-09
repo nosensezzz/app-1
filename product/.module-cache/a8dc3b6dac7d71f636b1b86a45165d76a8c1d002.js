@@ -54,7 +54,6 @@ var UserLogin = React.createClass({displayName: "UserLogin",
 	},
 
 	handleEmailInput: function (event) {
-		console.log(this);
 		this.setState({
 			email:event.target.value,
 		});
