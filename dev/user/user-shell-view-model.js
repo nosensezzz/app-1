@@ -1,11 +1,12 @@
 define(function(require){
 	'use strict';
 
+	// Spa tools
 	var Region = require('system/spa/region'),
 		Conductor = require('system/spa/conductor');
 
 	// React Components
-	require('./views/user-login-react');
+	var UserLogin = require('./views/user-login-react');
 
 	function user_shell_vm(){
 		this.parent = null;

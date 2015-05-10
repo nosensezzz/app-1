@@ -1,7 +1,5 @@
 define(function (require) {
 	'use strict';
-	// define component here
-	var Input = require('./Input');
 
 	var UserLogin = React.createClass({displayName: "UserLogin",
 		componentWillMount: function (argument) {
@@ -101,7 +99,7 @@ define(function (require) {
 					React.createElement("div", {className: "user-login-form"}, 
 						React.createElement("h1", null, "Create account"), 
 						React.createElement("form", {onSubmit: this.saveAndContinue}, 
-							React.createElement("input", {text: "Email Address", ref: "email", type: "text", 
+							React.createElement(Input, {text: "Email Address", ref: "email", type: "text", 
 							defaultValue: this.state.email, validate: this.validateEmail, 
 							value: this.state.email, 
 							onChange: this.handleEmailInput, 
@@ -109,12 +107,12 @@ define(function (require) {
 							emptyMessage: "Email can't be empty", 
 							errorVisible: this.state.showEmailError}), 
 
-							React.createElement("input", {text: "password", type: "password", ref: "password", validator: "true", 
+							React.createElement(Input, {text: "password", type: "password", ref: "password", validator: "true", 
 							minCharacters: "6", requireCapitals: "1", requireNumbers: "1", 
 							forbiddenWords: this.state.forbiddenWords, value: this.state.password, 
 							emptyMessage: "password is invalid", onChange: this.handlePasswordInput}), 
 
-							React.createElement("input", {text: "confirm password", ref: "passwordConfirm", type: "password", 
+							React.createElement(Input, {text: "confirm password", ref: "passwordConfirm", type: "password", 
 							validate: this.isConfirmedPassword, value: this.state.confirmPassword, 
 							onChange: this.handleConfirmPasswordInput, 
 							emptyMessage: "please confirm your password", errorMessage: "Not matched"})
@@ -125,10 +123,8 @@ define(function (require) {
 		}
 	});
 
-	return UserLogin;
+	module.exports(UserLogin);
 });
-
-	
 
 
 

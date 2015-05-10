@@ -1,8 +1,7 @@
 define(function (require) {
 	'use strict';
 	// define component here
-	var Input = require('./Input');
-
+	
 	var UserLogin = React.createClass({displayName: "UserLogin",
 		componentWillMount: function (argument) {
 		},

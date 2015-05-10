@@ -1,7 +1,6 @@
 define(function(require){
 	'use strict';
 
-	// Spa tools
 	var Region = require('system/spa/region'),
 		Conductor = require('system/spa/conductor');
 

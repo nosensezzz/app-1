@@ -1,9 +1,9 @@
 define(function (require) {
-	'use strict';
-	// define component here
-	var Input = require('./Input');
+	
+	function ComponentsDefineClass (argument) {	 } 
 
-	var UserLogin = React.createClass({displayName: "UserLogin",
+	ComponentsDefineClass.import = function(){
+		var UserLogin = React.createClass({displayName: "UserLogin",
 		componentWillMount: function (argument) {
 		},
 
@@ -125,7 +125,9 @@ define(function (require) {
 		}
 	});
 
-	return UserLogin;
+	};
+
+	return ComponentsDefineClass;
 });
 
 	

@@ -1,101 +1,135 @@
-var UserLogin = React.createClass({
-	getInitialState: function (argument) {
-		return {
-			email:null,
-			password: null,
-			confirmPassword: null,
-			statesValue: null,
-			forbiddenWords: ['username'],
-		};
-	},
+define(function (require) {
+	'use strict';
+	// define component here
+	var Input = require('./Input');
 
-	handlePasswordInput: function (event) {
-		if(!_.isEmpty(this.state.confirmPassword)){
-			this.refs.passwordConfirm.isValid();
-		}
-		this.refs.passwordConfirm.hideError();
-		this.setState({
-			password: event.target.value,
-		});
-	},
+	var UserLogin = React.createClass({
+		componentWillMount: function (argument) {
+		},
 
-	handleConfirmPasswordInput: function (event) {
-		this.setState({
-			confirmPassword: event.target.value,
-		});
-	},
+		componentDidMount: function (argument) {
+		},
 
-	saveAndContinue: function (e) {
-		e.preventDefault();
+		componentWillUpdate: function (nextProps) {
+			console.log(nextProps);
+		},
 
-		var canProceed = this.validateEmail(this.state.email)
-			&& !_.isEmpty(this.state.statesValue)
-			&& this.refs.password.isValid()
-			&& this.refs.passwordConfirm.isValid();
+		componentWillUnmount: function (argument) {
+			alert('done');
+		},
 
-		if(canProceed){
-			var data = {
-				email: this.state.email,
-				state: this.state.statesValue
+		getInitialState: function (argument) {
+			return {
+				email:null,
+				password: null,
+				confirmPassword: null,
+				statesValue: null,
+				forbiddenWords: ['username'],
+			};
+		},
+
+		handlePasswordInput: function (event) {
+			if(!_.isEmpty(this.state.confirmPassword)){
+				this.refs.passwordConfirm.isValid();
 			}
-			alert('thanks');
+			this.refs.passwordConfirm.hideError();
+			this.setState({
+				password: event.target.value,
+			});
+		},
 
-		} else {
-			this.refs.email.isValid();
-			this.refs.state.isValid();
-			this.refs.password.isValid();
-			this.refs.passwordConfirm.isValid();
+		handleConfirmPasswordInput: function (event) {
+			this.setState({
+				confirmPassword: event.target.value,
+			});
+		},
 
-		}
-	},
+		saveAndContinue: function (e) {
+			e.preventDefault();
 
-	isConfirmedPassword: function(event){
-		return (event === this.state.password);
-	},
+			var canProceed = this.validateEmail(this.state.email)
+				&& !_.isEmpty(this.state.statesValue)
+				&& this.refs.password.isValid()
+				&& this.refs.passwordConfirm.isValid();
 
-	handleEmailInput: function (event) {
-		console.log(this);
-		this.setState({
-			email:event.target.value,
-		});
-	},
+			if(canProceed){
+				var data = {
+					email: this.state.email,
+					state: this.state.statesValue
+				}
+				alert('thanks');
 
-	validateEmail: function (event) {
-		// regular
-	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-	    return re.test(event);
-	},
+			} else {
+				this.refs.email.isValid();
+				this.refs.state.isValid();
+				this.refs.password.isValid();
+				this.refs.passwordConfirm.isValid();
 
-	isEmpty: function (value) {
-		var a = _.isEmpty(value);
-		return a;
-	},
+			}
+		},
 
-	updateStatesValue: function (value) {
-		this.setState({
-			statesValue: value,
-		});
-	},
+		isConfirmedPassword: function(event){
+			return (event === this.state.password);
+		},
 
-	render: function () {
-		return (
-			<div className="user-login-div">
-				<div className="user-login-form">
-					<h1>Create account</h1>
-					<form onSubmit={this.saveAndContinue}>
-						<input text="Email Address" ref="email" type="text" 
-						defaultValue={this.state.email} validate={this.validateEmail}
-						value={this.state.email}
-						onChange={this.handleEmailInput}
-						errorMessage="Email is invalid"
-						emptyMessage="Email can't be empty"
-						errorVisible={this.state.showEmailError}  />
-					</form>
+		handleEmailInput: function (event) {
+			this.setState({
+				email:event.target.value,
+			});
+		},
+
+		validateEmail: function (event) {
+			// regular
+		    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		    return re.test(event);
+		},
+
+		isEmpty: function (value) {
+			var a = _.isEmpty(value);
+			return a;
+		},
+
+		updateStatesValue: function (value) {
+			this.setState({
+				statesValue: value,
+			});
+		},
+
+		render: function () {
+			return (
+				<div className="user-login-div">
+					<div className="user-login-form">
+						<h1>Create account</h1>
+						<form onSubmit={this.saveAndContinue}>
+							<input text="Email Address" ref="email" type="text" 
+							defaultValue={this.state.email} validate={this.validateEmail}
+							value={this.state.email}
+							onChange={this.handleEmailInput}
+							errorMessage="Email is invalid"
+							emptyMessage="Email can't be empty"
+							errorVisible={this.state.showEmailError}  />
+
+							<input text="password" type="password" ref="password" validator="true"
+							minCharacters="6" requireCapitals="1" requireNumbers="1"
+							forbiddenWords={this.state.forbiddenWords} value={this.state.password}
+							emptyMessage="password is invalid" onChange={this.handlePasswordInput} />
+
+							<input text="confirm password" ref="passwordConfirm" type="password"
+							validate={this.isConfirmedPassword} value={this.state.confirmPassword}
+							onChange={this.handleConfirmPasswordInput}
+							emptyMessage="please confirm your password" errorMessage="Not matched" />
+						</form>
+					</div>
 				</div>
-			</div>
-			);
-	}
+				);
+		}
+	});
+
+	return UserLogin;
 });
+
+	
+
 
 
 
