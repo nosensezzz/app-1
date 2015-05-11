@@ -4,6 +4,8 @@ define(function(require){
 	var Region = require('system/spa/region'),
 		Conductor = require('system/spa/conductor');
 
+	// react component
+
 	function lobby_vm(){
 		this.region = Object.resolve(Region);
 
@@ -25,7 +27,6 @@ define(function(require){
 
 	lobby_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
-		var	appMainDiv = React.createElement('div' , {id:'lobby-main-div'} , 'you are at lobbyyyyy!' );
 
 		var HelloMessage = React.createClass({
 			render: function() {

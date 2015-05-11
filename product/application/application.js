@@ -40,14 +40,15 @@ define(function(require){
     Application.prototype.sammyInit = function init_sammy(){
     	var self = this,
     		region = Object.resolve(Region),
-    		module = null,
-    		app = Sammy(function(){
+    		module = null;
+
+    		// sammy define
+    		Sammy(function(){
     			this.get("#/" , function (argument) {
-    				// re-init lobby
     				self.conductor.append(self, self.contentRegion, self.lobbyModule);
     			});
 
-    			this.get("#/user/login" , function (argument) {
+    			this.get("#/user/*" , function (argument) {
     				module = Object.resolve(UserModule);
     				region.setElement(self.region.$element.find($("#app-content")));
     				region.screen = self;
@@ -60,13 +61,13 @@ define(function(require){
     			}
     		});
 
-    		app.run("");
+    		Sammy().run("#/");
     };
 
     Application.prototype.LayoutInit = function init_layout($body) {
         var self = this;
 
-		var loginButton = React.createElement('a' , {href:'#/user/login'} , 'login'),
+		var loginButton = React.createElement('a' , {href:'#/user'} , 'login'),
 			logo = React.createElement('a' , {href:'#/'} , 'logo'),
 			headerDiv = React.createElement('div' , {className:'app-header-div'} , logo , '      ' , loginButton),
 

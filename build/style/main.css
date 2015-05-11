@@ -9,3 +9,6 @@
 .app-content-div{
 	padding: 20px;
 }
+
+.hide{display: none;}
+.show{display: block;}

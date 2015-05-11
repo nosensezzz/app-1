@@ -114,10 +114,8 @@ define(function (require) {
 							forbiddenWords: this.state.forbiddenWords, value: this.state.password, 
 							emptyMessage: "password is invalid", onChange: this.handlePasswordInput}), 
 
-							React.createElement("input", {text: "confirm password", ref: "passwordConfirm", type: "password", 
-							validate: this.isConfirmedPassword, value: this.state.confirmPassword, 
-							onChange: this.handleConfirmPasswordInput, 
-							emptyMessage: "please confirm your password", errorMessage: "Not matched"})
+							React.createElement("input", {type: "password", 
+							onChange: this.handleConfirmPasswordInput})
 						)
 					)
 				)

@@ -1,5 +1,12 @@
 define(function (require) {
 	'use strict';
+	// needed module
+	var userServiceModule = require('../service/user-service'),
+		userService = Object.resolve(userServiceModule),
+
+		userDTOModule = require('../model/user-dto'),
+		UserDTO = Object.resolve(userDTOModule);
+
 	// define component here
 	var Input = require('./Input');
 
@@ -10,88 +17,116 @@ define(function (require) {
 		componentDidMount: function (argument) {
 		},
 
-		componentWillUpdate: function (nextProps) {
-			console.log(nextProps);
+		componentWillUpdate: function (nextProps , nextState) {
+
+		},
+
+		componentDidUpdate: function (prevProps , prevState) {
+
 		},
 
 		componentWillUnmount: function (argument) {
-			alert('done');
+
 		},
 
 		getInitialState: function (argument) {
 			return {
+				name:null,
 				email:null,
+
 				password: null,
+				passwordValid: false,
+
 				confirmPassword: null,
+				confirmPasswordValid: false,
+
 				statesValue: null,
 				forbiddenWords: ['username'],
+
+				msgDivClassName: 'hide',
 			};
 		},
 
 		handlePasswordInput: function (event) {
-			if(!_.isEmpty(this.state.confirmPassword)){
-				this.refs.passwordConfirm.isValid();
+			var self = this;
+			if(event.target.value.length < 6){
+				$("#register-invalid-msg-div").html("password minimam length: 6");
+				$("#register-invalid-msg-div").show();
+				self.setState({
+						passwordValid:false,
+				});
+			} else {
+				self.setState({
+					passwordValid:true,
+				});
+
+				if(self.state.confirmPassword === event.target.value){
+					$("#register-invalid-msg-div").hide();
+				} else {
+					$("#register-invalid-msg-div").html("password not match");
+					$("#register-invalid-msg-div").show();
+				}
 			}
-			this.refs.passwordConfirm.hideError();
-			this.setState({
-				password: event.target.value,
+
+			self.setState({
+				password:event.target.value,
 			});
 		},
 
 		handleConfirmPasswordInput: function (event) {
-			this.setState({
+			var self = this;
+			if(self.state.passwordValid !== true){ return false; }
+			else {
+				if(event.target.value !== self.state.password){
+					$("#register-invalid-msg-div").html("password not match");
+					$("#register-invalid-msg-div").show();
+					self.setState({
+						confirmPasswordValid: false,
+					});
+				} else {
+					self.setState({
+						confirmPasswordValid:true,
+					});
+
+					$("#register-invalid-msg-div").hide();
+				}
+			}
+			self.setState({
 				confirmPassword: event.target.value,
 			});
+
 		},
 
 		saveAndContinue: function (e) {
 			e.preventDefault();
-
-			var canProceed = this.validateEmail(this.state.email)
-				&& !_.isEmpty(this.state.statesValue)
-				&& this.refs.password.isValid()
-				&& this.refs.passwordConfirm.isValid();
-
-			if(canProceed){
-				var data = {
-					email: this.state.email,
-					state: this.state.statesValue
-				}
-				alert('thanks');
-
+			var self = this,
+				userObj = UserDTO.packageUser(self.state);
+			if(userObj){
+				userService.registerUser(userObj)
+				.done(function(data){
+					alert('done');
+				})
+				.fail(function(data){
+					alert("error: " + data.responseText);
+				});
 			} else {
-				this.refs.email.isValid();
-				this.refs.state.isValid();
-				this.refs.password.isValid();
-				this.refs.passwordConfirm.isValid();
-
+				alert('invalid info.');
 			}
 		},
 
-		isConfirmedPassword: function(event){
-			return (event === this.state.password);
-		},
 
 		handleEmailInput: function (event) {
+			// email validate...
+
+
 			this.setState({
 				email:event.target.value,
 			});
 		},
 
-		validateEmail: function (event) {
-			// regular
-		    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		    return re.test(event);
-		},
-
-		isEmpty: function (value) {
-			var a = _.isEmpty(value);
-			return a;
-		},
-
-		updateStatesValue: function (value) {
+		handleNameInput: function (event){
 			this.setState({
-				statesValue: value,
+				name: event.target.value,
 			});
 		},
 
@@ -101,68 +136,33 @@ define(function (require) {
 					<div className="user-login-form">
 						<h1>Create account</h1>
 						<form onSubmit={this.saveAndContinue}>
-							<input text="Email Address" ref="email" type="text" 
-							defaultValue={this.state.email} validate={this.validateEmail}
-							value={this.state.email}
-							onChange={this.handleEmailInput}
-							errorMessage="Email is invalid"
-							emptyMessage="Email can't be empty"
-							errorVisible={this.state.showEmailError}  />
+							<span>Name </span>
+							<input ref="name" type="text" value={this.state.name} onChange={this.handleNameInput} />
+							<br/>
 
-							<input text="password" type="password" ref="password" validator="true"
-							minCharacters="6" requireCapitals="1" requireNumbers="1"
-							forbiddenWords={this.state.forbiddenWords} value={this.state.password}
-							emptyMessage="password is invalid" onChange={this.handlePasswordInput} />
+							<span>Email </span>
+							<input ref="email" type="email" value={this.state.email} onChange={this.handleEmailInput} />
+							<br/>
 
-							<input text="confirm password" ref="passwordConfirm" type="password"
-							validate={this.isConfirmedPassword} value={this.state.confirmPassword}
-							onChange={this.handleConfirmPasswordInput}
-							emptyMessage="please confirm your password" errorMessage="Not matched" />
+							<span>Pw </span>
+							<input type="password" ref="password" 
+							value={this.state.password} onChange={this.handlePasswordInput} />
+							<br/>
+
+							<span>ConfirmPw </span>
+							<input type="password" ref="confirmPassword" onChange={this.handleConfirmPasswordInput} 
+							value={this.state.confirmPassword} />
+							<br/>
+
+							<div className={this.state.msgDivClassName} id="register-invalid-msg-div" ></div>
+							<br/>
+							<button type="submit" >Submit</button>
 						</form>
 					</div>
 				</div>
-				);
-		}
+			);
+		},
 	});
 
 	return UserLogin;
 });
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
