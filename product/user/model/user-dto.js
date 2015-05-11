@@ -1,11 +1,11 @@
-define(function (require) {
+define(function (require) { // user model handler
 	'use strict';
 
 	function UserDto (){
 
 	};
 
-	UserDto.prototype.packageUser = function(data) {
+	UserDto.prototype.packageUser = function(data) { // validation && package all handle here
 		var self = this;
 		//console.log(data);
 		if(data.passwordValid && data.confirmPasswordValid){

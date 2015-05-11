@@ -1,4 +1,4 @@
-define(function(require){ // app start
+define(function(require){
 	'use strict';
 	
 	var Region = require('system/spa/region'),

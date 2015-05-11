@@ -1,10 +1,11 @@
-define(function(require){
+define(function(require){ // app launch page
 	'use strict';
 
 	var Region = require('system/spa/region'),
 		Conductor = require('system/spa/conductor');
 
 	// react component
+	var UserList = require()
 
 	function lobby_vm(){
 		this.region = Object.resolve(Region);

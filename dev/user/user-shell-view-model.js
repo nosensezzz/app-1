@@ -1,4 +1,4 @@
-define(function(require){
+define(function(require){ // app - user module - shell
 	'use strict';
 
 	// Spa tools

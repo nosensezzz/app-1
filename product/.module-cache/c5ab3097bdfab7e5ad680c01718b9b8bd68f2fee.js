@@ -1,4 +1,4 @@
-define(function(require){ // app start
+define(function(require){
 	'use strict';
 	
 	var Region = require('system/spa/region'),
@@ -44,11 +44,11 @@ define(function(require){ // app start
 
     		// sammy define
     		Sammy(function(){
-    			this.get("#app-shell" , function (argument) {
+    			this.get("#" , function (argument) {
     				self.conductor.append(self, self.contentRegion, self.lobbyModule);
     			});
 
-    			this.get("#user/*" , function (argument) {
+    			this.get("#user" , function (argument) {
     				module = Object.resolve(UserModule);
     				region.setElement(self.region.$element.find($("#app-content")));
     				region.screen = self;
@@ -67,8 +67,8 @@ define(function(require){ // app start
     Application.prototype.LayoutInit = function init_layout($body) {
         var self = this;
 
-		var loginButton = React.createElement('a' , {href:'#user'} , 'login'),
-			logo = React.createElement('a' , {href:'#app-shell'} , 'logo'),
+		var loginButton = React.createElement('a' , {href:'#/user'} , 'login'),
+			logo = React.createElement('a' , {href:'#/'} , 'logo'),
 			headerDiv = React.createElement('div' , {className:'app-header-div'} , logo , '      ' , loginButton),
 
 			footerDiv = React.createElement('div' , {className:'app-footer-div'} , 'footer'),

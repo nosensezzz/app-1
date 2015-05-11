@@ -1,4 +1,4 @@
-define(function (require) {
+define(function (require) { // handle all user module api call here
 	'use strict';
 
 	function UserService (){

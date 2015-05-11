@@ -1,4 +1,4 @@
-define(function (require) { // user model handler
+define(function (require) {
 	'use strict';
 
 	function UserDto (){
