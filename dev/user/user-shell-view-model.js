@@ -6,7 +6,7 @@ define(function(require){ // app - user module - shell
 		Conductor = require('system/spa/conductor');
 
 	// React Components
-	var UserLogin = require('./views/user-login-react'),
+	var UserRegister = require('./views/user-login-react'),
 		UserList = require('./views/user-list-react');
 
 	function user_shell_vm(){
@@ -30,20 +30,22 @@ define(function(require){ // app - user module - shell
 
 	user_shell_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
-		self.registerUser();
+		self.loginPage();
+		//self.registerPage();
 	};
 
-	user_shell_vm.prototype.registerUser = function() {
+	user_shell_vm.prototype.loginPage = function (argument) {
 		var self = this;
-		location.hash = '#user/register';
-		React.render(<UserLogin />	, self.region.element);
+		React.render(<UserLogin> ， self.region.element);
+	}
+
+	user_shell_vm.prototype.registerPage = function() {
+		var self = this;
+		React.render(<UserRegister />	, self.region.element);
 	};
 
 	user_shell_vm.prototype.sammyInit = function init_sammy (argument) {
 		var self = this;
-		Sammy(function(){
-			this.get("#user/a" , function (argument) {});
-    	});	
 	};
 
 	return user_shell_vm;

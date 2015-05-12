@@ -31,12 +31,10 @@ define(function(require){ // app - user module - shell
 	user_shell_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
 		self.loginPage();
-		//self.registerPage();
+		//self.registerUser();
 	};
 
-	user_shell_vm.prototype.loginPage();
-
-	user_shell_vm.prototype.registerPage = function() {
+	user_shell_vm.prototype.registerUser = function() {
 		var self = this;
 		React.render(React.createElement(UserLogin, null)	, self.region.element);
 	};

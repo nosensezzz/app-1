@@ -42,8 +42,6 @@ define(function(require){ // app start
     		region = Object.resolve(Region),
     		module = null;
 
-    		region.setElement(self.region.$element.find($("#app-content")));
-    		region.screen = self;
     		// sammy define
     		Sammy(function(){
     			this.get("#app-shell" , function (argument) {
@@ -52,6 +50,9 @@ define(function(require){ // app start
 
     			this.get("#user" , function (argument) {
     				module = Object.resolve(UserModule);
+    				region.setElement(self.region.$element.find($("#app-content")));
+    				region.screen = self;
+    				//console.log(region);
     				self.conductor.append(self, region, module);
     			});
 

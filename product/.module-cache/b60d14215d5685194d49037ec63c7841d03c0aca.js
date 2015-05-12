@@ -43,7 +43,7 @@ define(function(require){ // app start
     		module = null;
 
     		region.setElement(self.region.$element.find($("#app-content")));
-    		region.screen = self;
+    				region.screen = self;
     		// sammy define
     		Sammy(function(){
     			this.get("#app-shell" , function (argument) {
