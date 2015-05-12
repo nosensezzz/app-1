@@ -32,10 +32,19 @@ define(function () {
 
     	return instance;
     }
+    
+    function tryMethod(context , methodName){
+        var args = Array.prototype.slice.call(arguments , 2);
+        if(!respondsTo(context , methodName)){
+            return undefined;
+        }
+        return context[methodName].apply(context , args);
+    }
 
     var functions = {
     	construct: construct,
     	resolve: resolve,
+    	tryMethod: tryMethod,
     };
 
     $.extend(Object, functions);
