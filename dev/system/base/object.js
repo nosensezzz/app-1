@@ -40,6 +40,26 @@ define(function () {
         }
         return context[methodName].apply(context , args);
     }
+    
+    function respondsTo(context, methods, throwOnUndefined) {
+        var i;
+
+        if (!_.isArray(methods)) {
+            methods = [methods];
+        }
+
+        for (i = 0; i < methods.length; i++) {
+            if (!_.isFunction(context[methods[i]])) {
+                if (throwOnUndefined) {
+                    throw ('Required method ' + methods[i] + ' is not defined');
+                }
+
+                return false;
+            }
+        }
+
+        return true;
+    }
 
     var functions = {
     	construct: construct,
