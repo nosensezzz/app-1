@@ -36,7 +36,7 @@ define(function(require){ // app - user module - shell
 
 	user_shell_vm.prototype.loginPage = function (argument) {
 		var self = this;
-		React.render(<UserLogin> ， self.region.element);
+		React.render(<UserLogin />, self.region.element);
 	}
 
 	user_shell_vm.prototype.registerPage = function() {
