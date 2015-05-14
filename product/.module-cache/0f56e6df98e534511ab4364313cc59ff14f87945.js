@@ -7,5 +7,17 @@ define(function (require) {
 		userDTOModule = require('../model/user-dto'),
 		UserDTO = Object.resolve(userDTOModule);
 
-	
+	var UserLogin = React.createClass({displayName: "UserLogin",
+		getInitialState: function () {
+			return {};
+		},
+
+		render: function () {
+			return (
+				React.createElement("div", null)
+			);
+		}
+	});
+
+	return UserLogin;
 });

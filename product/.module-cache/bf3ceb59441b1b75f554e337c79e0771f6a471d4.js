@@ -6,29 +6,16 @@ define(function (require) {
 		userDTOModule = require('../model/user-dto'),
 		UserDTO = Object.resolve(userDTOModule);
 
-	var UserLoginButton = require('./user-login-button-react');
+	var UserLoginButtons = require('./user-login-button-react');
 
-	var UserLogin = React.createClass({
+	var UserLogin = React.createClass({displayName: "UserLogin",
 		getInitialState: function () {
 			return {};
 		},
 
-		childButtonClicked: function (child) {
-			console.log(child);
-		},
-
 		render: function () {
-			var props = {
-				myname:'login button',
-				childButtonClicked: this.childButtonClicked,
-			};
 			return (
-				<div>
-					login panel
-					<div>
-						<UserLoginButton {...props} />
-					</div>
-				</div>
+				React.createElement("div", null)
 			);
 		}
 	});

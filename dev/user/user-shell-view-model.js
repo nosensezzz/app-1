@@ -6,7 +6,8 @@ define(function(require){ // app - user module - shell
 		Conductor = require('system/spa/conductor');
 
 	// React Components
-	var UserRegister = require('./views/user-login-react'),
+	var UserRegister = require('./views/user-register-react'),
+		UserLogin = require('./views/user-login-react'),
 		UserList = require('./views/user-list-react');
 
 	function user_shell_vm(){

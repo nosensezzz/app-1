@@ -8,7 +8,7 @@ define(function (require) {
 
 	var UserLoginButton = require('./user-login-button-react');
 
-	var UserLogin = React.createClass({
+	var UserLogin = React.createClass({displayName: "UserLogin",
 		getInitialState: function () {
 			return {};
 		},
@@ -19,16 +19,16 @@ define(function (require) {
 
 		render: function () {
 			var props = {
-				myname:'login button',
+				myname:'parent button',
 				childButtonClicked: this.childButtonClicked,
 			};
 			return (
-				<div>
-					login panel
-					<div>
-						<UserLoginButton {...props} />
-					</div>
-				</div>
+				React.createElement("div", null, 
+					"login panel", 
+					React.createElement("div", null, 
+						React.createElement(UserLoginButton, React.__spread({},  props))
+					)
+				)
 			);
 		}
 	});
