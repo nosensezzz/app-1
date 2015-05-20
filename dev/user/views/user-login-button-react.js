@@ -21,8 +21,10 @@ define(function (require) {
 
 		render: function () {
 			return (
-				<div>
-					<button onClick={this.buttonClick}>{this.props.myname}</button>
+				<div className="row-fluid">
+					<span className="span6">
+						<button type="button" className="btn btn-default full-width" onClick={this.buttonClick}>{this.props.myname}</button>
+					</span>
 				</div>
 			);
 		}

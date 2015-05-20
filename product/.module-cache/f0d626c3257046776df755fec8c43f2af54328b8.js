@@ -10,7 +10,7 @@ define(function (require) {
 	// define component here
 	var Input = require('./Input');
 
-	var UserRegister = React.createClass({
+	var UserRegister = React.createClass({displayName: "UserRegister",
 		componentWillMount: function (argument) {
 		},
 
@@ -132,37 +132,35 @@ define(function (require) {
 
 		render: function () {
 			return (
-				<div className="user-register-div">
-					<div className="user-register-form">
-						<h1>Create account</h1>
-						<form onSubmit={this.saveAndContinue} role="form">
-							<div className="form-group">
-								<label for="name">Name:</label>
-								<input ref="name" type="text" value={this.state.name} onChange={this.handleNameInput} className="form-control" />
-							</div>
-							
-						
+				React.createElement("div", {className: "user-register-div"}, 
+					React.createElement("div", {className: "user-register-form"}, 
+						React.createElement("h1", null, "Create account"), 
+						React.createElement("form", {onSubmit: this.saveAndContinue, role: "form"}, 
+							React.createElement("div", {className: "form-group"}), 
+							React.createElement("span", null, "Name "), 
+							React.createElement("input", {ref: "name", type: "text", value: this.state.name, onChange: this.handleNameInput}), 
+							React.createElement("br", null), 
 
-							<span>Email </span>
-							<input ref="email" type="email" value={this.state.email} onChange={this.handleEmailInput} />
-							<br/>
+							React.createElement("span", null, "Email "), 
+							React.createElement("input", {ref: "email", type: "email", value: this.state.email, onChange: this.handleEmailInput}), 
+							React.createElement("br", null), 
 
-							<span>Pw </span>
-							<input type="password" ref="password" 
-							value={this.state.password} onChange={this.handlePasswordInput} />
-							<br/>
+							React.createElement("span", null, "Pw "), 
+							React.createElement("input", {type: "password", ref: "password", 
+							value: this.state.password, onChange: this.handlePasswordInput}), 
+							React.createElement("br", null), 
 
-							<span>ConfirmPw </span>
-							<input type="password" ref="confirmPassword" onChange={this.handleConfirmPasswordInput} 
-							value={this.state.confirmPassword} />
-							<br/>
+							React.createElement("span", null, "ConfirmPw "), 
+							React.createElement("input", {type: "password", ref: "confirmPassword", onChange: this.handleConfirmPasswordInput, 
+							value: this.state.confirmPassword}), 
+							React.createElement("br", null), 
 
-							<div className={this.state.msgDivClassName} id="register-invalid-msg-div" ></div>
-							<br/>
-							<button type="submit" >Submit</button>
-						</form>
-					</div>
-				</div>
+							React.createElement("div", {className: this.state.msgDivClassName, id: "register-invalid-msg-div"}), 
+							React.createElement("br", null), 
+							React.createElement("button", {type: "submit"}, "Submit")
+						)
+					)
+				)
 			);
 		},
 	});

@@ -39,17 +39,17 @@ define(function (require) {
 
 			return (
 				React.createElement("div", {id: ""}, 
-					React.createElement("div", {className: "panel panel-default"}, 
-						React.createElement("div", {className: "panel-heading"}, 
-							React.createElement("h6", {className: "panel-title"}, "User List")
-						), 
-						React.createElement("div", {className: "panel-body"}, 
-							"panel body"
-						)
+				React.createElement("div", {className: "panel panel-default"}, 
+					React.createElement("div", {className: "panel-heading"}, 
+						React.createElement("h6", {className: "panel-title"}, "User List")
 					), 
-					React.createElement("div", null, 
-						React.createElement(UserLoginButton, React.__spread({},  button1_props)), " ", React.createElement(UserLoginButton, React.__spread({},  button2_props))
+					React.createElement("div", {className: "panel-body"}, 
+						"panel body"
 					)
+				), 
+				React.createElement("div", null, 
+					React.createElement(UserLoginButton, React.__spread({},  button1_props)), " ", React.createElement(UserLoginButton, React.__spread({},  button2_props))
+				)
 				)
 			);
 		}

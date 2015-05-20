@@ -22,9 +22,7 @@ define(function (require) {
 		render: function () {
 			return (
 				React.createElement("div", {className: "row-fluid"}, 
-					React.createElement("span", {className: "span6"}, 
-						React.createElement("button", {type: "button", className: "btn btn-default full-width", onClick: this.buttonClick}, this.props.myname)
-					)
+					React.createElement("button", {type: "button", className: "btn btn-default span1", onClick: this.buttonClick}, this.props.myname)
 				)
 			);
 		}

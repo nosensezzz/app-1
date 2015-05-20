@@ -38,16 +38,18 @@ define(function (require) {
 				};
 
 			return (
-				<div className="panel panel-default">
-					<div className="panel-heading">
-						<h6 className="panel-title">User List</h6>
+				<div id="">
+					<div className="panel panel-default">
+						<div className="panel-heading">
+							<h6 className="panel-title">User List</h6>
+						</div>
+						<div className="panel-body">
+							panel body
+						</div>
 					</div>
-					<div className="panel-body">
-						panel body
+					<div>
+						<UserLoginButton {...button1_props} /> <UserLoginButton {...button2_props} />
 					</div>
-				</div>
-				<div>
-					<UserLoginButton {...button1_props} /> <UserLoginButton {...button2_props} />
 				</div>
 			);
 		}
