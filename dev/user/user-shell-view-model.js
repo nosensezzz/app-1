@@ -18,14 +18,16 @@ define(function(require){ // app - user module - shell
 	user_shell_vm.prototype.ready = function _ready(parent , child) {
 		// Initial module...
 		var self = this;
+		window.vm = self;
 		self.parent = parent;
 		self.region.$element.attr("id", "user-shell");
 
 		_.defer(function(){
+			self.sammyInit();
 			self.reactInit();
 
 			// register sub route
-			self.sammyInit();
+			
 		});
 	};
 

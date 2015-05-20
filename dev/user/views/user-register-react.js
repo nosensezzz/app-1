@@ -132,8 +132,8 @@ define(function (require) {
 
 		render: function () {
 			return (
-				<div className="user-login-div">
-					<div className="user-login-form">
+				<div className="user-register-div">
+					<div className="user-register-form">
 						<h1>Create account</h1>
 						<form onSubmit={this.saveAndContinue}>
 							<span>Name </span>

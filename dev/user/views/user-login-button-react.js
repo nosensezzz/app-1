@@ -16,7 +16,7 @@ define(function (require) {
 
 		buttonClick: function (event) {
 			var self = this;
-			this.props.childButtonClicked(self);
+			this.props.childButtonClicked(self, self.props.action);
 		},
 
 		render: function () {
