@@ -24,5 +24,24 @@ define(function (require) { // handle all user module api call here
 		return dfd.promise();
 	};
 
+	UserService.prototype.loginUser = function(user) {
+		var dfd = $.Deferred();
+		console.log(user);
+		$.ajax({
+			type: "POST",
+			dataType: "json",
+			data:user,
+			url: "http://localhost:3001/api/user/login",
+			success: function (data) {
+				dfd.resolve(data);
+			},
+			error: function (data) {
+				dfd.reject(data);
+			}
+		});
+
+		return dfd.promise();
+	};
+
 	return UserService;
 });

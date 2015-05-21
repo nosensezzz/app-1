@@ -10,13 +10,26 @@ define(function (require) {
 
 	var UserLogin = React.createClass({
 		getInitialState: function () {
-			return {};
+			return {
+				email: null,
+				password: null,
+			};
 		},
 
 		childButtonClicked: function (child , action) {
+			var self =this;
 			switch (action){
 				case "login":
-
+					userService.loginUser({
+						email: self.state.email,
+						password: self.state.password,
+					})
+					.done(function (callback) {
+						console.log(callback);
+					})
+					.fail(function (callback) {
+						console.log(callback);
+					});
 					break;
 				case "register":
 					window.location = '#user/register';
@@ -24,6 +37,20 @@ define(function (require) {
 				default:
 					break;
 			}
+		},
+
+		handleEmailInput: function (event) {
+			var self = this;
+			self.setState({
+				email: event.target.value,
+			});
+		},
+
+		handlePasswordInput: function (event) {
+			var self = this;
+			self.setState({
+				password: event.target.value,
+			});
 		},
 
 		render: function () {
@@ -43,10 +70,23 @@ define(function (require) {
 						<div className="panel-heading">
 							<h6 className="panel-title">User List</h6>
 						</div>
+
 						<div className="panel-body">
 							panel body
 						</div>
 					</div>
+
+					<form onSubmit={this.userLogin} role="form">
+							<div className="form-group">
+								<label for="email">Email:</label>
+								<input ref="email" type="email" value={this.state.email} onChange={this.handleEmailInput} className="form-control" />
+							</div>
+
+							<div className="form-group">
+								<label for="password">Password:</label>
+								<input type="password" ref="password" value={this.state.password} onChange={this.handlePasswordInput} className="form-control" />
+							</div>
+						</form>
 					<div>
 						<UserLoginButton {...button1_props} /> <UserLoginButton {...button2_props} />
 					</div>

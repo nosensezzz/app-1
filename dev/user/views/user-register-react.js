@@ -50,6 +50,7 @@ define(function (require) {
 		handlePasswordInput: function (event) {
 			var self = this;
 			if(event.target.value.length < 6){
+				//$("#register-invalid-msg-div").removeClass("hide");
 				$("#register-invalid-msg-div").html("password minimam length: 6");
 				$("#register-invalid-msg-div").show();
 				self.setState({
@@ -63,6 +64,7 @@ define(function (require) {
 				if(self.state.confirmPassword === event.target.value){
 					$("#register-invalid-msg-div").hide();
 				} else {
+					//$("#register-invalid-msg-div").removeClass("hide");
 					$("#register-invalid-msg-div").html("password not match");
 					$("#register-invalid-msg-div").show();
 				}
@@ -130,7 +132,15 @@ define(function (require) {
 			});
 		},
 
+		backToShell: function(){
+			location.assign("#user");
+		},
+
 		render: function () {
+			var hintStyle = {
+				display: "none"
+			};
+
 			return (
 				<div className="user-register-div">
 					<div className="user-register-form">
@@ -141,26 +151,26 @@ define(function (require) {
 								<input ref="name" type="text" value={this.state.name} onChange={this.handleNameInput} className="form-control" />
 							</div>
 							
+							<div className="form-group">
+								<label for="email">Email:</label>
+								<input ref="email" type="email" value={this.state.email} onChange={this.handleEmailInput} className="form-control" />
+							</div>
+
+							<div className="form-group">
+								<label for="password">Password:</label>
+								<input type="password" ref="password" value={this.state.password} onChange={this.handlePasswordInput} className="form-control" />
+							</div>
+
+							<div className="form-group">
+								<label for="ConfirmPassword">ConfirmPassword:</label>
+								<input type="password" ref="confirmPassword" onChange={this.handleConfirmPasswordInput} value={this.state.confirmPassword} className="form-control" />
+							</div>
+							<div style={hintStyle} id="register-invalid-msg-div" >jjj</div>
 						
-
-							<span>Email </span>
-							<input ref="email" type="email" value={this.state.email} onChange={this.handleEmailInput} />
-							<br/>
-
-							<span>Pw </span>
-							<input type="password" ref="password" 
-							value={this.state.password} onChange={this.handlePasswordInput} />
-							<br/>
-
-							<span>ConfirmPw </span>
-							<input type="password" ref="confirmPassword" onChange={this.handleConfirmPasswordInput} 
-							value={this.state.confirmPassword} />
-							<br/>
-
-							<div className={this.state.msgDivClassName} id="register-invalid-msg-div" ></div>
-							<br/>
-							<button type="submit" >Submit</button>
+							<button type="submit" className="btn btn-default full-width" >Submit</button>
+							
 						</form>
+						<button className="btn btn-default full-width" onClick={this.backToShell} >Back</button>
 					</div>
 				</div>
 			);

@@ -6,7 +6,7 @@ define(function (require) {
 		render: function () {
 			return (
 				<div id="app-content-div" role="main" className="app-content-div">
-					jjj
+					
 				</div>
 			);
 		}
