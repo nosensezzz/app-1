@@ -31,24 +31,10 @@ define(function (require) {
 					.done(function (callback) {
 						console.log(callback);
 						if(callback.status === 200){
-							self.setState({
-								userFound: true,
-								user: callback,
-								displayName: callback.name,
-								displayEmail: callback.email,
-							});
+							self.setState({userFound: true , user: callback});
 							$("#user-display-panel-if-found").show();
-							$("#user-display-panel-msg").hide();
-						} else if(callback.status === 405){
-
-							self.setState({userFound: false});
-							$("#user-display-panel-msg").html("wrong password");
-							$("#user-display-panel-msg").show();
-							$("#user-display-panel-if-found").hide();
 						} else if(callback.status === 404){
 							self.setState({userFound: false});
-							$("#user-display-panel-msg").html("no such user");
-							$("#user-display-panel-msg").show();
 							$("#user-display-panel-if-found").hide();
 						}
 					})
@@ -89,7 +75,7 @@ define(function (require) {
 					childButtonClicked: this.childButtonClicked
 				};
 
-			var StyleDefaultHide = {
+			var userTableStyle = {
 					display: 'none'
 				};
 
@@ -101,7 +87,7 @@ define(function (require) {
 						), 
 
 						React.createElement("div", {className: "panel-body"}, 
-							React.createElement("table", {className: "table", id: "user-display-panel-if-found", style: StyleDefaultHide}, 
+							React.createElement("table", {className: "table", id: "user-display-panel-if-found", style: userTableStyle}, 
 								React.createElement("tr", null, 
 									React.createElement("th", null, "#"), 
 									React.createElement("th", null, "Email"), 
@@ -113,8 +99,7 @@ define(function (require) {
 									React.createElement("th", null, this.state.displayEmail), 
 									React.createElement("th", null, this.state.displayName)
 								)
-							), 
-							React.createElement("div", {style: StyleDefaultHide, id: "user-display-panel-msg"})
+							)
 						)
 					), 
 

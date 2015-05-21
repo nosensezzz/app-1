@@ -8,7 +8,7 @@ define(function (require) {
 
 	var UserLoginButton = require('./user-login-button-react');
 
-	var UserLogin = React.createClass({
+	var UserLogin = React.createClass({displayName: "UserLogin",
 		getInitialState: function () {
 			return {
 				email: null,
@@ -38,17 +38,8 @@ define(function (require) {
 								displayEmail: callback.email,
 							});
 							$("#user-display-panel-if-found").show();
-							$("#user-display-panel-msg").hide();
-						} else if(callback.status === 405){
-
-							self.setState({userFound: false});
-							$("#user-display-panel-msg").html("wrong password");
-							$("#user-display-panel-msg").show();
-							$("#user-display-panel-if-found").hide();
 						} else if(callback.status === 404){
 							self.setState({userFound: false});
-							$("#user-display-panel-msg").html("no such user");
-							$("#user-display-panel-msg").show();
 							$("#user-display-panel-if-found").hide();
 						}
 					})
@@ -89,50 +80,50 @@ define(function (require) {
 					childButtonClicked: this.childButtonClicked
 				};
 
-			var StyleDefaultHide = {
+			var userTableStyle = {
 					display: 'none'
 				};
 
 			return (
-				<div id="">
-					<div className="panel panel-default">
-						<div className="panel-heading">
-							<h6 className="panel-title">User List</h6>
-						</div>
+				React.createElement("div", {id: ""}, 
+					React.createElement("div", {className: "panel panel-default"}, 
+						React.createElement("div", {className: "panel-heading"}, 
+							React.createElement("h6", {className: "panel-title"}, "User List")
+						), 
 
-						<div className="panel-body">
-							<table className="table" id="user-display-panel-if-found" style={StyleDefaultHide}>
-								<tr>
-									<th>#</th>
-									<th>Email</th>
-									<th>Name</th>
-								</tr>
+						React.createElement("div", {className: "panel-body"}, 
+							React.createElement("table", {className: "table", id: "user-display-panel-if-found", style: userTableStyle}, 
+								React.createElement("tr", null, 
+									React.createElement("th", null, "#"), 
+									React.createElement("th", null, "Email"), 
+									React.createElement("th", null, "Name")
+								), 
 
-								<tr>
-									<th></th>
-									<th>{this.state.displayEmail}</th>
-									<th>{this.state.displayName}</th>
-								</tr>
-							</table>
-							<div style={StyleDefaultHide} id="user-display-panel-msg"></div>
-						</div>
-					</div>
+								React.createElement("tr", null, 
+									React.createElement("th", null), 
+									React.createElement("th", null, this.state.displayEmail), 
+									React.createElement("th", null, this.state.displayName)
+								)
+							)
 
-					<form onSubmit={this.userLogin} role="form">
-							<div className="form-group">
-								<label for="email">Email:</label>
-								<input ref="email" type="email" value={this.state.email} onChange={this.handleEmailInput} className="form-control" />
-							</div>
+						)
+					), 
 
-							<div className="form-group">
-								<label for="password">Password:</label>
-								<input type="password" ref="password" value={this.state.password} onChange={this.handlePasswordInput} className="form-control" />
-							</div>
-						</form>
-					<div>
-						<UserLoginButton {...button1_props} /> <UserLoginButton {...button2_props} />
-					</div>
-				</div>
+					React.createElement("form", {onSubmit: this.userLogin, role: "form"}, 
+							React.createElement("div", {className: "form-group"}, 
+								React.createElement("label", {for: "email"}, "Email:"), 
+								React.createElement("input", {ref: "email", type: "email", value: this.state.email, onChange: this.handleEmailInput, className: "form-control"})
+							), 
+
+							React.createElement("div", {className: "form-group"}, 
+								React.createElement("label", {for: "password"}, "Password:"), 
+								React.createElement("input", {type: "password", ref: "password", value: this.state.password, onChange: this.handlePasswordInput, className: "form-control"})
+							)
+						), 
+					React.createElement("div", null, 
+						React.createElement(UserLoginButton, React.__spread({},  button1_props)), " ", React.createElement(UserLoginButton, React.__spread({},  button2_props))
+					)
+				)
 			);
 		}
 	});

@@ -15,8 +15,6 @@ define(function (require) {
 				password: null,
 				userFound: false,
 				user: null,
-				displayEmail: null,
-				displayName: null
 			};
 		},
 
@@ -31,25 +29,9 @@ define(function (require) {
 					.done(function (callback) {
 						console.log(callback);
 						if(callback.status === 200){
-							self.setState({
-								userFound: true,
-								user: callback,
-								displayName: callback.name,
-								displayEmail: callback.email,
-							});
-							$("#user-display-panel-if-found").show();
-							$("#user-display-panel-msg").hide();
-						} else if(callback.status === 405){
-
-							self.setState({userFound: false});
-							$("#user-display-panel-msg").html("wrong password");
-							$("#user-display-panel-msg").show();
-							$("#user-display-panel-if-found").hide();
+							self.setState({userFound: true , user: callback});
 						} else if(callback.status === 404){
 							self.setState({userFound: false});
-							$("#user-display-panel-msg").html("no such user");
-							$("#user-display-panel-msg").show();
-							$("#user-display-panel-if-found").hide();
 						}
 					})
 					.fail(function (callback) {
@@ -89,10 +71,6 @@ define(function (require) {
 					childButtonClicked: this.childButtonClicked
 				};
 
-			var StyleDefaultHide = {
-					display: 'none'
-				};
-
 			return (
 				React.createElement("div", {id: ""}, 
 					React.createElement("div", {className: "panel panel-default"}, 
@@ -101,7 +79,7 @@ define(function (require) {
 						), 
 
 						React.createElement("div", {className: "panel-body"}, 
-							React.createElement("table", {className: "table", id: "user-display-panel-if-found", style: StyleDefaultHide}, 
+							React.createElement("table", {className: "table"}, 
 								React.createElement("tr", null, 
 									React.createElement("th", null, "#"), 
 									React.createElement("th", null, "Email"), 
@@ -110,11 +88,10 @@ define(function (require) {
 
 								React.createElement("tr", null, 
 									React.createElement("th", null), 
-									React.createElement("th", null, this.state.displayEmail), 
-									React.createElement("th", null, this.state.displayName)
+									React.createElement("th", null, this.state.user.email), 
+									React.createElement("th", null, "Name")
 								)
-							), 
-							React.createElement("div", {style: StyleDefaultHide, id: "user-display-panel-msg"})
+							)
 						)
 					), 
 
