@@ -14,7 +14,7 @@ define(function (require) {
 						<a className="navbar-brand" href="/#app-shell">LOGO</a>
 
 						<div id="header-navbar" className="navbar-collapse collapse">
-							<ul className="nav navbar-nav">
+							<ul className="nav navbar-nav pull-right">
 								<li><a href="/#user">User</a></li>
 							</ul>
 						</div>

@@ -14,7 +14,7 @@ define(function (require) {
 						React.createElement("a", {className: "navbar-brand", href: "/#app-shell"}, "LOGO"), 
 
 						React.createElement("div", {id: "header-navbar", className: "navbar-collapse collapse"}, 
-							React.createElement("ul", {className: "nav navbar-nav pull-right"}, 
+							React.createElement("ul", {className: "nav navbar-nav go-left"}, 
 								React.createElement("li", null, React.createElement("a", {href: "/#user"}, "User"))
 							)
 						)
