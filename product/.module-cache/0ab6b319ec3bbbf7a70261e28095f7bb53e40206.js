@@ -29,7 +29,13 @@ define(function(require){ // app launch page
 	lobby_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
 
-		React.render(React.createElement(DotaHeroList, {name: "foo"}), self.region.element);
+		var HelloMessage = React.createClass({displayName: "HelloMessage",
+			render: function() {
+		    return React.createElement("div", null, "Hello ", this.props.name, " , you are at lobby.");
+		  }
+		});
+
+		React.render(React.createElement(HelloMessage, {name: "foo"}), self.region.element);
 	}
 
 	lobby_vm.prototype.sammyInit = function init_sammy (argument) {

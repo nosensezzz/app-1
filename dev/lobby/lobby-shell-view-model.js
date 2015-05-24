@@ -5,7 +5,7 @@ define(function(require){ // app launch page
 		Conductor = require('system/spa/conductor');
 
 	// react component
-	var UserList = require()
+	var DotaHeroList = require('./views/dotahero-list-react');
 
 	function lobby_vm(){
 		this.region = Object.resolve(Region);
@@ -29,13 +29,7 @@ define(function(require){ // app launch page
 	lobby_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
 
-		var HelloMessage = React.createClass({
-			render: function() {
-		    return <div>Hello {this.props.name} , you are at lobby.</div>;
-		  }
-		});
-
-		React.render(<HelloMessage name="foo" />, self.region.element);
+		React.render(<DotaHeroList name="foo" />, self.region.element);
 	}
 
 	lobby_vm.prototype.sammyInit = function init_sammy (argument) {
