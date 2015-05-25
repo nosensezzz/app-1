@@ -4,7 +4,7 @@ define(function (require) {
 		Conductor = require('system/spa/conductor');
 
 	var	ExampleViewModel = require('example/example-view-model'),
-		LobbyModule = require('lobby/lobby-shell-view-model'),
+		heroModule = require('hero/lobby-shell-view-model'),
 		UserModule = require('user/user-shell-view-model');
 
 	function Sammy () {
@@ -23,8 +23,13 @@ define(function (require) {
 		Sammy(function(){
 				// ************** app shell
     			this.get("#app-shell" , function (argument) {
-    				self.conductor.append(self, region, self.lobbyModule);
+    				//self.conductor.append(self, region, self.lobbyModule);
     			});
+
+                // ************** app heroes
+                this.get("#heroes" , function (argument) {
+                    self.conductor.append(self, region, self.heroModule);
+                });
 
     			// ************** user shell
     			this.get("#user" , function (argument) {

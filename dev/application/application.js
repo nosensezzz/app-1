@@ -7,7 +7,8 @@ define(function(require){ // app start
 		Conductor = require('system/spa/conductor');
 
 	var	ExampleViewModel = require('example/example-view-model'),
-		LobbyModule = require('lobby/lobby-shell-view-model'),
+		HeroModule = require('hero/lobby-shell-view-model'),
+		//LobbyModule = require('lobby/lobby-shell-view-model'),
 		UserModule = require('user/user-shell-view-model');
 
 	function Application(conductor){
@@ -15,7 +16,7 @@ define(function(require){ // app start
 
 		this.region = Object.resolve(Region);
 
-		this.lobbyModule = Object.resolve(LobbyModule);
+		this.heroModule = Object.resolve(HeroModule);
 	}
 
 	Application.singleton = true;
