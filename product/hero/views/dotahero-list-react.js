@@ -68,7 +68,7 @@ define(function (require) {
 			// render view
 			return (
 				React.createElement("div", {id: "dotahero-list-div"}, 
-					React.createElement("div", {id: "leftComponent", className: "hero-left-bar positionRelative hide"}, 
+					React.createElement("div", {id: "leftComponent", className: "hero-left-bar positionRelative"}, 
 						React.createElement("button", {className: "positionFixed hero-bar-collapsed-i", onClick: self.leftBarControl}, "bar"), 
 
 						React.createElement("div", {className: "clearboth", id: "hero-left-bar-content"}, "leftbar")

@@ -5,7 +5,7 @@ define(function(require){
 	window.React = require("react");
 	window.Sammy = require('sammy');
 
-	window._scale = document.body.clientWidth / 1200;
+	window._scale = document.body.clientWidth / 1000;
 
 	require(['system/base/object'] , function(){
 		require(['application/application'] , function(Application){
