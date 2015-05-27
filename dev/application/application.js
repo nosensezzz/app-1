@@ -8,14 +8,14 @@ define(function(require){ // app start
 
 	var	ExampleViewModel = require('example/example-view-model'),
 		HeroModule = require('hero/lobby-shell-view-model'),
-		//LobbyModule = require('lobby/lobby-shell-view-model'),
+		LobbyModule = require('lobby/lobby-shell-view-model'),
 		UserModule = require('user/user-shell-view-model');
 
 	function Application(conductor){
 		this.conductor = new Conductor();
 
 		this.region = Object.resolve(Region);
-
+		this.lobbyModule = Object.resolve(LobbyModule);
 		this.heroModule = Object.resolve(HeroModule);
 	}
 

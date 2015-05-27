@@ -55,11 +55,9 @@ define(function(require){ // app launch page
 		self.service.getLocalHeroesData()
 		.then(function (callback) {
 			self.heroLocalData = callback;
-			self.service.getHeroes().then(function (callback) {
-				self.heroRankData = callback;
-				dfd.resolve(self);
-			});
-		})
+
+			dfd.resolve(self);
+		});
 		
 		return dfd.promise();
 	}

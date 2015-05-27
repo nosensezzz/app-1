@@ -15,6 +15,7 @@ define(function (require) {
 		},
 
 		componentDidMount: function (argument) {
+			
 		},
 
 		componentWillUpdate: function (nextProps , nextState) {

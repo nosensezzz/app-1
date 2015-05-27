@@ -5,6 +5,11 @@ define(function(require){
 	window.React = require("react");
 	window.Sammy = require('sammy');
 
+	window._scale = document.body.clientWidth / 1000;
+
+	document.getElementById("viewport").setAttribute("content",
+      "initial-scale=1; maximum-scale=1.0;minimum-scale=1.0; user-scalable=0;");
+
 	require(['system/base/object'] , function(){
 		require(['application/application'] , function(Application){
 			var app = Object.resolve(Application);

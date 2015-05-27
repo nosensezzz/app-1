@@ -20,10 +20,11 @@ define(function (require) {
     		region.setElement(self.region.$element.find($("#app-content-div")));
     		region.screen = self;
 
+        Sammy().run();
 		Sammy(function(){
 				// ************** app shell
     			this.get("#app-shell" , function (argument) {
-    				//self.conductor.append(self, region, self.lobbyModule);
+    				self.conductor.append(self, region, self.lobbyModule);
     			});
 
                 // ************** app heroes
@@ -50,7 +51,6 @@ define(function (require) {
     			}
     		});
 
-    		Sammy().run();
 	}
 
 	return Sammy;
