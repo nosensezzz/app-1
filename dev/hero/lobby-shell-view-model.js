@@ -55,7 +55,6 @@ define(function(require){ // app launch page
 		self.service.getLocalHeroesData()
 		.then(function (callback) {
 			self.heroLocalData = callback;
-
 			dfd.resolve(self);
 		});
 		

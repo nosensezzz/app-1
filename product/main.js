@@ -6,6 +6,7 @@ define(function(require){
 	window.Sammy = require('sammy');
 
 	window._scale = document.body.clientWidth / 1200;
+	console.log(window._scale);
 
 	require(['system/base/object'] , function(){
 		require(['application/application'] , function(Application){
