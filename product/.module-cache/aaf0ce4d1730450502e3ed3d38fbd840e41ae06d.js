@@ -10,15 +10,11 @@ define(function (require) {
 		getInitialState: function () {
 			return {
 				filter:false,
-				displayHeroes: null,
 			};
 		},
 
 		componentWillMount: function (argument) {
-			var self = this;
-			self.setState({
-				displayHeroes: self.props.data.heroLocalData
-			});
+
 		},
 
 		componentDidMount: function (argument) {
@@ -40,21 +36,30 @@ define(function (require) {
 			e.stopPropagation();
 		},
 
-		filterType: function (type , e) {
-			var self = this,
-				tem = null;
-			console.log(type);
-			switch (type){
-				case "int":
-				tem = _.filter(self.state.displayHeroes , function (hero , i) {
-					return hero.type === "int";
-				});
-				console.log(tem);
+		filterControl: function (e) {
+			var self = this;
+			//console.log(self.state)
+			if(self.state.filter){
+				self.state.filterComponentContent.hide();
+
+				self.state.filterComponent.show();
+				self.state.listComponent.addClass("hero-list-block");
+				self.state.listComponent.removeClass("hero-list-block-expand");
+
 				self.setState({
-					displayHeroes: tem,
+					filter:false
 				});
-				break;
-				default:break;
+
+				
+			} else {
+				self.state.filterComponentContent.show();
+
+				self.state.filterComponent.hide();
+				self.state.listComponent.removeClass("hero-list-block");
+				self.state.listComponent.addClass("hero-list-block-expand");
+				self.setState({
+					filter:true
+				});
 			}
 		},
 
@@ -64,19 +69,22 @@ define(function (require) {
 			return (
 				React.createElement("div", {id: "dotahero-list-div", className: "module-main-div positionRelative"}, 
 					React.createElement("div", {id: "filter-block", className: "hero-filter-block"}, 
-						React.createElement("button", {type: "checkbox", onClick: self.filterType.bind(self , 'int'), className: "btn btn-default"}, "Int"), 
+						React.createElement("div", {className: "clearboth", id: "filter-block-content"}, "leftbar"), 
 						React.createElement("div", {className: "clearboth", id: "filter-block-content"}, "leftbar"), 
 						React.createElement("div", {className: "clearboth", id: "filter-block-content"}, "leftbar"), 
 						React.createElement("div", {className: "clearboth", id: "filter-block-content"}, "leftbar"), 
 						React.createElement("div", {className: "clearboth", id: "filter-block-content"}, "leftbar")
 					), 
 
-					React.createElement("div", {id: "hero-list", className: "hero-list-block overflowHidden"}, 
+					React.createElement("div", {id: "hero-list", className: "row hero-list-block"}, 
 					
-						self.state.displayHeroes.map(function (hero) {
-							return React.createElement("div", {className: "item col-xs-3 col-lg-3 grid-group-item noPadding", key: hero.id, onClick: self.heroClicked.bind(self,hero)}, 
-										React.createElement("div", {className: "thumbnail "  + hero.type}, 
-											React.createElement("img", {className: "group list-group-image full-width", src: "build/picture/dotahero/" +hero.type+"/"+hero.id+".png", alt: true})
+						self.props.data.heroLocalData.map(function (hero) {
+							return React.createElement("div", {className: "item col-xs-3 col-lg-3 grid-group-item", key: hero.id, onClick: self.heroClicked.bind(self,hero)}, 
+										React.createElement("div", {className: "thumbnail"}, 
+											React.createElement("img", {className: "group list-group-image full-width", src: "build/picture/dotahero/" +hero.type+"/"+hero.id+".png", alt: true}), 
+											React.createElement("div", {className: "caption"}, 
+												React.createElement("h6", {className: "group inner list-group-item-heading"}, hero.name)
+											)
 										)
 									)
 						})

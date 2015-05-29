@@ -50,9 +50,6 @@ define(function (require) {
 					return hero.type === "int";
 				});
 				console.log(tem);
-				self.setState({
-					displayHeroes: tem,
-				});
 				break;
 				default:break;
 			}

@@ -26,7 +26,7 @@
 .app-content{
 	position: absolute;
 	top:50px;
-	padding: 10px 20px 10px 20px;
+	padding: 1% 2% 1% 2%;
 	height: calc(100% - 100px);
 	width: 100%;
 	overflow: auto;
@@ -38,6 +38,7 @@
 .module-main-div{
 	height: 100%;
 	width: 100%;
+	overflow: auto;
 }
 
 .hide{display: none;}
@@ -47,9 +48,13 @@
 .full-height{ height: 100%;}
 .full-size{ width: 100%; height: 100%;}
 .clearboth{ clear: both;}
+.overflowAuto{ overflow: auto; }
+.overflowHidden{ overflow: hidden;}
 .positionRelative{position: relative;}
 .positionAbsolute{position: absolute;}
 .paddingtopbottom5px{ padding: 5px 0 5px 0; }
+.padding_1p{ padding: 1%;}
+.noPadding{ padding: 0 0 0 0!important;}
 /* icons */
 .smallIcon33{
 	height: 30px;
@@ -60,6 +65,18 @@
 	width: 40px;
 }
 /* hero module */
+.int{ 
+	background-color: rgb(147, 147, 255)!important; 
+	margin: 1%; 
+}
+.str{ 
+	background-color: rgb(244, 99, 73)!important; 
+	margin: 1%;
+}
+.agi{ 
+	background-color: rgb(148, 244, 138)!important; 
+	margin: 1%;
+}
 .hero-bar-collapsed-i{ left:0; bottom: 0; }
 .hero-filter-block{ 
 	width: 100%;

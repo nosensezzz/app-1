@@ -10,11 +10,15 @@ define(function (require) {
 		getInitialState: function () {
 			return {
 				filter:false,
+				displayHeroes: null,
 			};
 		},
 
 		componentWillMount: function (argument) {
-
+			var self = this;
+			self.setState({
+				displayHeroes: self.props.data.heroLocalData
+			});
 		},
 
 		componentDidMount: function (argument) {
@@ -36,30 +40,21 @@ define(function (require) {
 			e.stopPropagation();
 		},
 
-		filterControl: function (e) {
-			var self = this;
-			//console.log(self.state)
-			if(self.state.filter){
-				self.state.filterComponentContent.hide();
-
-				self.state.filterComponent.show();
-				self.state.listComponent.addClass("hero-list-block");
-				self.state.listComponent.removeClass("hero-list-block-expand");
-
-				self.setState({
-					filter:false
+		filterType: function (type , e) {
+			var self = this,
+				tem = null;
+			console.log(type);
+			switch (type){
+				case "int":
+				tem = _.filter(self.state.displayHeroes , function (hero , i) {
+					return hero.type === "int";
 				});
-
-				
-			} else {
-				self.state.filterComponentContent.show();
-
-				self.state.filterComponent.hide();
-				self.state.listComponent.removeClass("hero-list-block");
-				self.state.listComponent.addClass("hero-list-block-expand");
+				console.log(tem);
 				self.setState({
-					filter:true
+					displayHeroes: tem,
 				});
+				break;
+				default:break;
 			}
 		},
 
@@ -69,22 +64,19 @@ define(function (require) {
 			return (
 				<div id="dotahero-list-div" className="module-main-div positionRelative">
 					<div id="filter-block" className="hero-filter-block">
-						<div className="clearboth" id="filter-block-content">leftbar</div>
+						<button type="checkbox" onClick={self.filterType.bind(self , 'int')} className="btn btn-default">Int</button>
 						<div className="clearboth" id="filter-block-content">leftbar</div>
 						<div className="clearboth" id="filter-block-content">leftbar</div>
 						<div className="clearboth" id="filter-block-content">leftbar</div>
 						<div className="clearboth" id="filter-block-content">leftbar</div>
 					</div>
 
-					<div id="hero-list" className="row hero-list-block">
+					<div id="hero-list" className="hero-list-block overflowHidden">
 					{
-						self.props.data.heroLocalData.map(function (hero) {
-							return <div className="item col-xs-4 col-lg-4 grid-group-item" key={hero.id} onClick={self.heroClicked.bind(self,hero)} >
-										<div className="thumbnail">
+						self.state.displayHeroes.map(function (hero) {
+							return <div className="item col-xs-3 col-lg-3 grid-group-item noPadding" key={hero.id} onClick={self.heroClicked.bind(self,hero)} >
+										<div className={"thumbnail "  + hero.type}>
 											<img className="group list-group-image full-width" src={"build/picture/dotahero/" +hero.type+"/"+hero.id+".png"} alt />
-											<div className="caption">
-												<h4 className="group inner list-group-item-heading">{hero.name}</h4>
-											</div>
 										</div>
 									</div>
 						})

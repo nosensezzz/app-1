@@ -38,7 +38,7 @@ define(function (require) { // handle all user module api call here
 			error: function (data) {
 				dfd.reject(data);
 			},
-			timeout: 1000
+			timeout: 3000
 		});
 
 		return dfd.promise();

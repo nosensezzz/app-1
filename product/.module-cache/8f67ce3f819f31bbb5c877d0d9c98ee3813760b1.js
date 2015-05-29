@@ -17,7 +17,7 @@ define(function (require) {
 		componentWillMount: function (argument) {
 			var self = this;
 			self.setState({
-				displayHeroes: self.props.data.heroLocalData
+				displayHeroes: self.props.heroLocalData
 			});
 		},
 
@@ -50,9 +50,6 @@ define(function (require) {
 					return hero.type === "int";
 				});
 				console.log(tem);
-				self.setState({
-					displayHeroes: tem,
-				});
 				break;
 				default:break;
 			}
