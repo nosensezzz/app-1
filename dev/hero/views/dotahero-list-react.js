@@ -46,16 +46,20 @@ define(function (require) {
 			console.log(type);
 			switch (type){
 				case "int":
-				tem = _.filter(self.state.displayHeroes , function (hero , i) {
-					return hero.type === "int";
-				});
-				console.log(tem);
-				self.setState({
-					displayHeroes: tem,
-				});
+				break;
+				case "agi":
+				break;
+				case "str":
 				break;
 				default:break;
 			}
+
+			tem = _.filter(self.props.data.heroLocalData , function (hero , i) {
+				return hero.type === type;
+			});
+			self.setState({
+				displayHeroes: tem,
+			});
 		},
 
 		render: function () {
@@ -65,6 +69,8 @@ define(function (require) {
 				<div id="dotahero-list-div" className="module-main-div positionRelative">
 					<div id="filter-block" className="hero-filter-block">
 						<button type="checkbox" onClick={self.filterType.bind(self , 'int')} className="btn btn-default">Int</button>
+						<button type="checkbox" onClick={self.filterType.bind(self , 'agi')} className="btn btn-default">agi</button>
+						<button type="checkbox" onClick={self.filterType.bind(self , 'str')} className="btn btn-default">str</button>
 						<div className="clearboth" id="filter-block-content">leftbar</div>
 						<div className="clearboth" id="filter-block-content">leftbar</div>
 						<div className="clearboth" id="filter-block-content">leftbar</div>

@@ -46,15 +46,12 @@ define(function (require) {
 			console.log(type);
 			switch (type){
 				case "int":
-				break;
-				case "agi":
-				break;
-				case "str":
+				
 				break;
 				default:break;
 			}
 
-			tem = _.filter(self.props.data.heroLocalData , function (hero , i) {
+			tem = _.filter(self.state.displayHeroes , function (hero , i) {
 				return hero.type === type;
 			});
 			self.setState({

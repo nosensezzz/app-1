@@ -54,7 +54,7 @@ define(function (require) {
 				default:break;
 			}
 
-			tem = _.filter(self.props.data.heroLocalData , function (hero , i) {
+			tem = _.filter(self.state.displayHeroes , function (hero , i) {
 				return hero.type === type;
 			});
 			self.setState({
