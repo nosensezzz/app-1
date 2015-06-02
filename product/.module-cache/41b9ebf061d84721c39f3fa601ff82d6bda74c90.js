@@ -17,7 +17,7 @@ define(function (require) {
     		region = Object.resolve(Region),
     		module = null;
         region.setElement(self.region.$element.find($("#app-content-div")));
-        region.screen = self;
+            region.screen = self;
 
 		Sammy(function(){
                 // ************** not found
@@ -54,7 +54,11 @@ define(function (require) {
                 dfd.resolve();
     		});
 
-            Sammy().run("");
+            Sammy().run("/#app-shell");
+
+            
+
+            return dfd.promise();
 	}
 
 	return Sammy;

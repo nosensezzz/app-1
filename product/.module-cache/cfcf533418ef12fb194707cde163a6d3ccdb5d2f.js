@@ -16,8 +16,6 @@ define(function (require) {
 		var dfd = $.Deferred(),
     		region = Object.resolve(Region),
     		module = null;
-        region.setElement(self.region.$element.find($("#app-content-div")));
-        region.screen = self;
 
 		Sammy(function(){
                 // ************** not found
@@ -50,11 +48,14 @@ define(function (require) {
     				if(!self.userVM){ return; }
     				self.userVM.registerPage();
     			});
-
-                dfd.resolve();
     		});
 
             Sammy().run("");
+
+            region.setElement(self.region.$element.find($("#app-content-div")));
+            region.screen = self;
+
+            return dfd.promise();
 	}
 
 	return Sammy;

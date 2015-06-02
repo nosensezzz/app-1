@@ -23,6 +23,7 @@ define(function(require){ // app start
 
 	Application.prototype.init = function attach($body) {
 		var self = this;
+		
 
 		if($body){
 			self.LayoutInit($body);
@@ -33,11 +34,10 @@ define(function(require){ // app start
 
 		// sammy
 		_.defer(function(){
+			Sam.loadRoutes(Sammy , self);
 			self.sammyInit();
-
             location.assign("#app-shell");
 		});
-		
     };
 
     Application.prototype.sammyInit = function init_sammy(){
@@ -46,10 +46,7 @@ define(function(require){ // app start
     		module = null;
 
     		region.setElement(self.region.$element.find($("#app-content-div")));
-    		region.screen = self;
-    		// sammy define
-
-            Sam.loadRoutes(Sammy , self);
+    		region.screen = self;   
 
     };
 

@@ -54,7 +54,7 @@ define(function (require) {
                 dfd.resolve();
     		});
 
-            Sammy().run("");
+            Sammy().run("/#app-shell");
 	}
 
 	return Sammy;

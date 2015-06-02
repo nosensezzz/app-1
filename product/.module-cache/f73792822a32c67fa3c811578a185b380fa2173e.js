@@ -33,10 +33,11 @@ define(function(require){ // app start
 		}
 
 		// sammy
-		_.defer(function(){
-			Sam.loadRoutes(Sammy , self);
-			self.sammyInit();
-            location.assign("#app-shell");
+		Sam.loadRoutes(Sammy , self).done(function (a) {
+			_.defer(function(){
+				self.sammyInit();
+	            location.assign("#app-shell");
+			});
 		});
     };
 

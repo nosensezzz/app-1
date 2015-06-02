@@ -35,7 +35,7 @@ define(function(require){ // app start
 		// sammy
 		_.defer(function(){
 			Sam.loadRoutes(Sammy , self);
-			self.sammyInit();
+			//self.sammyInit();
             location.assign("#app-shell");
 		});
     };

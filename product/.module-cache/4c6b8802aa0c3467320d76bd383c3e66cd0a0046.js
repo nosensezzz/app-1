@@ -32,8 +32,8 @@ define(function (require) {
 		},
 
 		heroClicked: function (hero) {
-			//console.log(hero);
-			location.assign("/#heroes/" + hero.id + "/summary");
+			console.log(hero);
+			location.assign("/#aaaa");
 		},
 
 		filterType: function (type , e) {

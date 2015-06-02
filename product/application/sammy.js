@@ -13,15 +13,16 @@ define(function (require) {
 
 	Sammy.loadRoutes = function (Sammy , self) {
 
-		var 
+		var dfd = $.Deferred(),
     		region = Object.resolve(Region),
     		module = null;
+        region.setElement(self.region.$element.find($("#app-content-div")));
+        region.screen = self;
 
-    		region.setElement(self.region.$element.find($("#app-content-div")));
-    		region.screen = self;
-
-        Sammy().run();
 		Sammy(function(){
+                // ************** not found
+                this.notFound = function(){ }
+ 
 				// ************** app shell
     			this.get("#app-shell" , function (argument) {
     				self.conductor.append(self, region, self.lobbyModule);
@@ -30,6 +31,12 @@ define(function (require) {
                 // ************** app heroes
                 this.get("#heroes" , function (argument) {
                     self.conductor.append(self, region, self.heroModule);
+                });
+
+                this.get("#heroes/:heroID/summary" , function (argument) {
+                    // hero id => argument.params.heroID
+                    var id = argument.params.heroID;
+                    console.log(id);
                 });
 
     			// ************** user shell
@@ -44,13 +51,10 @@ define(function (require) {
     				self.userVM.registerPage();
     			});
 
-    			// ************** not found
-    			this.notFound = function (method) {
-    				// body...
-    				self.pageNotFound();
-    			}
+                dfd.resolve();
     		});
 
+            Sammy().run("");
 	}
 
 	return Sammy;

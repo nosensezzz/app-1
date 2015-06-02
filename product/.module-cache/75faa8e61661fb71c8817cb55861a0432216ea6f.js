@@ -32,7 +32,7 @@ define(function (require) {
 		},
 
 		heroClicked: function (hero) {
-			//console.log(hero);
+			console.log(hero);
 			location.assign("/#heroes/" + hero.id + "/summary");
 		},
 

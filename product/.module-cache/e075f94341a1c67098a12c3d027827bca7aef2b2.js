@@ -53,8 +53,6 @@ define(function (require) {
 
                 dfd.resolve();
     		});
-
-            Sammy().run("");
 	}
 
 	return Sammy;
