@@ -7,9 +7,10 @@ define(function(require){ // app launch page
 		heroServiceModule = require('./service/hero-service');
 
 	// react component
-	var DotaHeroList = require('./views/dotahero-list-react');
+	var DotaHeroList = require('./views/dotahero-list-react'),
+		DotaHeroSummary = require('./views/dotahero-summary-react');
 
-	function lobby_vm(){
+	function HeroViewModel(){
 		this.region = Object.resolve(Region);
 		this.service = Object.resolve(heroServiceModule);
 		this.parent = null;
@@ -18,9 +19,10 @@ define(function(require){ // app launch page
 		this.heroRankData = null;
 	}
 
-	lobby_vm.prototype.ready = function _ready(paret , chilc) {
+	HeroViewModel.prototype.ready = function _ready(parent , child) {
 		// Initial module...
 		var self = this;
+
 		self.region.$element.attr("id", "user-shell");
 
 		self.reactInit();
@@ -31,25 +33,49 @@ define(function(require){ // app launch page
 		
 	};
 
-	lobby_vm.prototype.reactInit = function init_react (argument) {
+	HeroViewModel.prototype.reactInit = function init_react (argument) {
 		var self = this,
 			dfd = $.Deferred();
 
 		loadDotaheroList(self , dfd);
 
 		dfd.done(function (callback) {
-			React.render(<DotaHeroList data={callback} />, self.region.element);
+			React.render(<DotaHeroList data={callback} root={self} />, self.region.element);
 		});
 		
-	}
+	};
 
-	lobby_vm.prototype.sammyInit = function init_sammy (argument) {
+	HeroViewModel.prototype.sammyInit = function init_sammy (argument) {
 		var self = this,
 			app = Sammy(function(){
 
     		});
     			
-	}
+	};
+
+	HeroViewModel.prototype.ViewHeroSummary = function viewhero (params) {
+		console.log(params);
+		var self = this;
+		React.render(<DotaHeroSummary data={params} root={self} />, self.region.element);
+	};
+
+	HeroViewModel.prototype.RegisterHeaderBackButton = function (where) {
+		var self = this,
+			app = Object.resolve(App),
+			params = null;
+			switch(where){
+				case "list":
+				params = {
+					type:"button",
+					caption: "back",
+				};
+				
+				console.log(app);
+				app.ModifyLayout(params , null , null);
+				break;
+				default:break;
+			}
+	};
 
 	function loadDotaheroList(self , dfd) {
 		self.service.getLocalHeroesData()
@@ -61,5 +87,5 @@ define(function(require){ // app launch page
 		return dfd.promise();
 	}
 
-	return lobby_vm;
+	return HeroViewModel;
 });

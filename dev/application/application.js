@@ -11,6 +11,8 @@ define(function(require){ // app start
 		LobbyModule = require('lobby/lobby-shell-view-model'),
 		UserModule = require('user/user-shell-view-model');
 
+	var AppRegion = require('./views/app-react');
+
 	function Application(conductor){
 		this.conductor = new Conductor();
 
@@ -51,10 +53,14 @@ define(function(require){ // app start
     };
 
     Application.prototype.LayoutInit = function init_layout($body) {
-        var self = this,
-            AppRegion = require('./views/app-react');
+        var self = this;
 
         React.render(<AppRegion /> , $body[0]);
+    };
+
+    Application.prototype.ModifyLayout = function (header , content , footer) {
+        var self = this;
+        React.render(<AppRegion Header={header} Content={content} Footer={footer} /> , $body[0]);
     };
 
     Application.prototype.pageNotFound = function (m) {

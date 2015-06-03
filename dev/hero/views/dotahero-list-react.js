@@ -7,10 +7,14 @@ define(function (require) {
 
 
 	var DotaheroList = React.createClass({
+
 		getInitialState: function () {
+			var self = this;
+
 			return {
 				filter:false,
 				displayHeroes: null,
+				root: self.props.root,
 			};
 		},
 
@@ -33,6 +37,8 @@ define(function (require) {
 
 		heroClicked: function (hero) {
 			//console.log(hero);
+			var self = this;
+			self.state.root.selectedHero = hero;
 			location.assign("/#heroes/" + hero.id + "/summary");
 		},
 

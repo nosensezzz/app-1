@@ -3,6 +3,8 @@ define(function (require) {
 
 	var HeaderReact = React.createClass({
 		getInitialState: function () {
+			var self = this;
+			console.log(self.props);
 			return {
 
 			};
@@ -13,7 +15,8 @@ define(function (require) {
 
 			return (
 				<div className="app-header">
-					header
+					<button>aa</button>
+
 				</div>
 			);
 		}

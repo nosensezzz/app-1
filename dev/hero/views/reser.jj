@@ -1,59 +1,30 @@
-<div className="row text-center paddingtopbottom5px">
-												<div className="col-xs-12 col-md-6">
-													<div className="col-xs-12 col-md-4" >
-														<img className="" src={"build/picture/dotahero/basicIcons/overviewicon_int.png"} alt />
-													</div>
-													<div className="col-xs-12 col-md-8 text-left" >
-														{hero.startInt} + {hero.IntPerLv}
-													</div>
-												</div>
+define(function	(require){
+	'use strict';
 
-												<div className="col-xs-12 col-md-6">
-													<div className="col-xs-12 col-md-4" >
-														<img className="" src={"build/picture/dotahero/basicIcons/overviewicon_attack.png"} alt />
-													</div>
-													<div className="col-xs-12 col-md-8 text-left" >
-														{hero.minDmgLv1} - {hero.maxDmgLv1}
-													</div>
-												</div>
-											</div>
+	var heroServiceModule = require('../service/hero-service'),
+		heroService = Object.resolve(heroServiceModule);
 
-											<div className="row text-center paddingtopbottom5px">
-												<div className="col-xs-12 col-md-6">
-													<div className="col-xs-12 col-md-4" >
-														<img className="" src={"build/picture/dotahero/basicIcons/overviewicon_agi.png"} alt />
-													</div>
-													<div className="col-xs-12 col-md-8 text-left" >
-														{hero.startAgi} + {hero.AgiPerLv}
-													</div>
-												</div>
+	var DotaheroSummary = React.createClass({
+		getInitialState: function () {
 
-												<div className="col-xs-12 col-md-6">
-													<div className="col-xs-12 col-md-4" >
-														<img className="" src={"build/picture/dotahero/basicIcons/overviewicon_speed.png"} alt />
-													</div>
-													<div className="col-xs-12 col-md-8 text-left" >
-														{hero.speed}
-													</div>
-												</div>
-											</div>
+		},
 
-											<div className="row text-center paddingtopbottom5px">
-												<div className="col-xs-12 col-md-6">
-													<div className="col-xs-12 col-md-4" >
-														<img className="" src={"build/picture/dotahero/basicIcons/overviewicon_str.png"} alt />
-													</div>
-													<div className="col-xs-12 col-md-8 text-left" >
-														{hero.startStr} + {hero.StrPerLv}
-													</div>
-												</div>
+		componentWillMount: function (argument) {
 
-												<div className="col-xs-12 col-md-6">
-													<div className="col-xs-12 col-md-4" >
-														<img className="" src={"build/picture/dotahero/basicIcons/overviewicon_armor.png"} alt />
-													</div>
-													<div className="col-xs-12 col-md-8 text-left" >
-														{hero.armor}
-													</div>
-												</div>
-											</div>
+		},
+
+		componentDidMount: function (argument) {
+
+		},
+
+		render: function () {
+			var self = this;
+			
+			return (
+				
+				);
+		}
+	});
+
+	return DotaheroSummary;
+});

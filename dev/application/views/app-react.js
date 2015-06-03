@@ -7,18 +7,22 @@ define(function (require) {
 
 	var AppRegion = React.createClass({
 		getInitialState: function () {
+			var self = this;
 			return {
+				headerParams: self.props.Header || null,
+				contentParams: self.props.Content || null,
+				footerParams: self.props.Footer || null,
 			};
 		},
 
 		render: function () {
+			var self = this;
+			
 			return (
 				<div id="app-div">
-					<AppHeaderRegion />
+					<AppHeaderRegion params={self.state.headerParams} />
 					<AppContentRegion />
 					<AppFooterRegion />
-					
-
 				</div>
 			);
 		}

@@ -35,8 +35,11 @@ define(function (require) {
 
                 this.get("#heroes/:heroID/summary" , function (argument) {
                     // hero id => argument.params.heroID
-                    var id = argument.params.heroID;
-                    console.log(id);
+                    var id = argument.params.heroID,
+                        params = {
+                        id: id
+                    }
+                    self.heroModule.ViewHeroSummary(params);
                 });
 
     			// ************** user shell
