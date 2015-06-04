@@ -54,27 +54,8 @@ define(function(require){ // app launch page
 	};
 
 	HeroViewModel.prototype.ViewHeroSummary = function viewhero (params) {
-		console.log(params);
 		var self = this;
 		React.render(<DotaHeroSummary data={params} root={self} />, self.region.element);
-	};
-
-	HeroViewModel.prototype.RegisterHeaderBackButton = function (where) {
-		var self = this,
-			app = Object.resolve(App),
-			params = null;
-			switch(where){
-				case "list":
-				params = {
-					type:"button",
-					caption: "back",
-				};
-				
-				console.log(app);
-				app.ModifyLayout(params , null , null);
-				break;
-				default:break;
-			}
 	};
 
 	function loadDotaheroList(self , dfd) {

@@ -11,7 +11,7 @@ define(function (require) {
 
 		render: function () {
 			return (
-				<div className="app-footer-panel">
+				<div className="app-footer-panel" id="app-footer-div">
 					<div className="full-height">
 						<FooterButton displayName="heroes" url="/#heroes" />
 						<FooterButton displayName="user" url="/#user" />

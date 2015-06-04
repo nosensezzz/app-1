@@ -14,7 +14,7 @@ define(function (require) {
 			var self = this;
 
 			return (
-				<div className="app-header">
+				<div className="app-header" id="app-header-div">
 					<button>aa</button>
 
 				</div>

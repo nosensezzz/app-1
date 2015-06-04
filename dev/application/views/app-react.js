@@ -20,9 +20,9 @@ define(function (require) {
 			
 			return (
 				<div id="app-div">
-					<AppHeaderRegion params={self.state.headerParams} />
-					<AppContentRegion />
-					<AppFooterRegion />
+					<div className="app-header" id="app-header-div"></div>
+					<div id="app-content-div" role="main" className="app-content"></div>
+					<div className="app-footer-panel" id="app-footer-div"></div>
 				</div>
 			);
 		}
