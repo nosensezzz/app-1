@@ -3,14 +3,16 @@ define(function(require){ // app launch page
 
 	var Region = require('system/spa/region'),
 		Conductor = require('system/spa/conductor'),
+		heroServiceModule = require('./service/hero-service'),
+		// events
+		ApplicationEvent = require('application/application-event'),
 
-		heroServiceModule = require('./service/hero-service');
-
-	// react component
-	var DotaHeroList = require('./views/dotahero-list-react'),
+		// react component
+		DotaHeroList = require('./views/dotahero-list-react'),
 		DotaHeroSummary = require('./views/dotahero-summary-react');
 
 	function HeroViewModel(){
+		this.applicationEvent = Object.resolve(ApplicationEvent);
 		this.region = Object.resolve(Region);
 		this.service = Object.resolve(heroServiceModule);
 		this.parent = null;
@@ -40,6 +42,7 @@ define(function(require){ // app launch page
 		loadDotaheroList(self , dfd);
 
 		dfd.done(function (callback) {
+			self.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:1, vm:"list"});
 			React.render(<DotaHeroList data={callback} root={self} />, self.region.element);
 		});
 		

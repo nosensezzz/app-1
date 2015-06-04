@@ -2,9 +2,13 @@ define(function(require){ // app launch page
 	'use strict';
 
 	var Region = require('system/spa/region'),
-		Conductor = require('system/spa/conductor');
+		Conductor = require('system/spa/conductor'),
+
+		// events
+		ApplicationEvent = require('application/application-event');
 
 	function lobby_vm(){
+		this.applicationEvent = Object.resolve(ApplicationEvent);
 		this.region = Object.resolve(Region);
 		this.service = null;	
 		this.parent = null;
@@ -26,7 +30,7 @@ define(function(require){ // app launch page
 
 	lobby_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
-
+			self.applicationEvent.SetApplicationHeader.raise({module:"lobby" , lv:1, vm:"news"});
 			React.render(<div>lobby</div>, self.region.element);
 		
 	}

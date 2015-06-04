@@ -39,7 +39,11 @@ define(function (require) {
 								)
 							);
 						}else if(from.lv === 2){
-							
+							return (
+								React.createElement("div", {className: "app-header", id: "app-header-div"}, 
+									"heros"
+								)
+							);
 						}
 					break;
 					default:break;

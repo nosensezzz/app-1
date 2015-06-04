@@ -39,6 +39,7 @@ define(function(require){ // app start
 			self.region.setElement($body.find($("#app-div")));
 			self.region.screen = self;
 		}
+
 		// sammy
 		_.defer(function(){
 			Sam.loadRoutes(Sammy , self);
@@ -48,16 +49,16 @@ define(function(require){ // app start
 
     Application.prototype.LayoutInit = function init_layout($body) {
         var self = this;
-        React.render(<AppRegion /> , $body[0]);
-        React.render(<AppHeaderRegion /> , $("#app-header-div")[0]);
-        React.render(<AppContentRegion /> , $("#app-content-div")[0]);
-        React.render(<AppFooterRegion /> , $("#app-footer-div")[0]);
+        React.render(React.createElement(AppRegion, null) , $body[0]);
+        React.render(React.createElement(AppHeaderRegion, null) , $("#app-header-div")[0]);
+        React.render(React.createElement(AppContentRegion, null) , $("#app-content-div")[0]);
+        React.render(React.createElement(AppFooterRegion, null) , $("#app-footer-div")[0]);
     };
 
     Application.prototype.ModifyHeader = function (params) {
         var self = this;
-        console.log(params);
-        React.render(<AppHeaderRegion params={params}/> , $("#app-header-div")[0]);
+        
+        React.render(React.createElement(AppHeaderRegion, null) , $("#app-header-div")[0]);
     };
 
     Application.prototype.pageNotFound = function (m) {

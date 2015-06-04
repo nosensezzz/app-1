@@ -30,7 +30,7 @@ define(function(require){ // app launch page
 
 	lobby_vm.prototype.reactInit = function init_react (argument) {
 		var self = this;
-			self.applicationEvent.SetApplicationHeader.raise({module:"lobby" , lv:1, vm:"news"});
+			self.state.root.applicationEvent.SetApplicationHeader.raise({module:"lobby" , lv:2, vm:"summary"});
 			React.render(React.createElement("div", null, "lobby"), self.region.element);
 		
 	}

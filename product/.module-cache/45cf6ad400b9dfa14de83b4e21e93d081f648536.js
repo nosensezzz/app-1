@@ -12,7 +12,6 @@ define(function(require){ // app launch page
 		DotaHeroSummary = require('./views/dotahero-summary-react');
 
 	function HeroViewModel(){
-		this.applicationEvent = Object.resolve(ApplicationEvent);
 		this.region = Object.resolve(Region);
 		this.service = Object.resolve(heroServiceModule);
 		this.parent = null;
@@ -42,7 +41,6 @@ define(function(require){ // app launch page
 		loadDotaheroList(self , dfd);
 
 		dfd.done(function (callback) {
-			self.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:1, vm:"list"});
 			React.render(React.createElement(DotaHeroList, {data: callback, root: self}), self.region.element);
 		});
 		

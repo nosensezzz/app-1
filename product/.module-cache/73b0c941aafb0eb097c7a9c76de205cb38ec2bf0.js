@@ -42,7 +42,6 @@ define(function(require){ // app launch page
 		loadDotaheroList(self , dfd);
 
 		dfd.done(function (callback) {
-			self.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:1, vm:"list"});
 			React.render(React.createElement(DotaHeroList, {data: callback, root: self}), self.region.element);
 		});
 		

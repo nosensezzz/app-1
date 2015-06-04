@@ -1,8 +1,7 @@
 define(function	(require){
 	'use strict';
 
-	var ApplicationEvent = require('application/application-event'),
-		heroServiceModule = require('../service/hero-service'),
+	var heroServiceModule = require('../service/hero-service'),
 		heroService = Object.resolve(heroServiceModule);
 
 	var DotaheroSummary = React.createClass({
@@ -18,7 +17,7 @@ define(function	(require){
 		componentWillMount: function (argument) {
 			var self = this;
 			console.log(self.state);
-			Object.resolve(ApplicationEvent).SetApplicationHeader.raise('summry');
+			self.state.root.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:2, vm:"summary"});
 		},
 
 		componentDidMount: function (argument) {

@@ -19,13 +19,13 @@ define(function (require) {
 						if(from.lv === 1){
 							return (
 								React.createElement("div", {className: "app-header", id: "app-header-div"}, 
-									"heros"
+									"button"
 								)
 							);
 						}else if(from.lv === 2){
 							return (
 								React.createElement("div", {className: "app-header", id: "app-header-div"}, 
-									"heros button"
+									"heros"
 								)
 							);
 						}
@@ -35,11 +35,15 @@ define(function (require) {
 						if(from.lv === 1){
 							return (
 								React.createElement("div", {className: "app-header", id: "app-header-div"}, 
-									"lobby"
+									"button"
 								)
 							);
 						}else if(from.lv === 2){
-							
+							return (
+								React.createElement("div", {className: "app-header", id: "app-header-div"}, 
+									"heros"
+								)
+							);
 						}
 					break;
 					default:break;

@@ -1,12 +1,12 @@
 define(function (require) {
 	'use strict';
 
-	var HeaderReact = React.createClass({
+	var HeaderReact = React.createClass({displayName: "HeaderReact",
 		getInitialState: function () {
 			var self = this;
 			console.log(self.props);
 			return {
-
+				from:self.props.params,
 			};
 		},
 	
@@ -14,10 +14,9 @@ define(function (require) {
 			var self = this;
 
 			return (
-				<div className="app-header" id="app-header-div">
-					<button>aa</button>
-
-				</div>
+				React.createElement("div", {className: "app-header", id: "app-header-div"}, 
+					"header"
+				)
 			);
 		}
 	});
