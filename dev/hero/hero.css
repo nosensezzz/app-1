@@ -1,0 +1,45 @@
+/* hero module */
+/* hero list */
+.int{ 
+	background-color: rgb(147, 147, 255)!important; 
+	margin: 1%; 
+}
+.str{ 
+	background-color: rgb(244, 99, 73)!important; 
+	margin: 1%;
+}
+.agi{ 
+	background-color: rgb(148, 244, 138)!important; 
+	margin: 1%;
+}
+.hero-bar-collapsed-i{ left:0; bottom: 0; }
+.hero-filter-block{ 
+	width: 100%;
+	background-color: blue;
+}
+
+.hero-list-block{ 
+	width: 100%;
+}
+.hero-list-block-expand{ 
+	height: 100%; width: 100%;
+}
+
+/* hero summary */
+.hero-summary-img{
+	width: 100%;
+}
+.hero-summary-img-div{
+	padding: 0 35%;
+}
+
+.hero-summary-row-div{
+	height: 5%;
+}
+
+.hero-summary-row-div-span-forIcon{
+	text-align: center;
+}
+.hero-summary-row-div-icon{
+	height: 100%;
+}

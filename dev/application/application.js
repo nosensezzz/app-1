@@ -41,8 +41,9 @@ define(function(require){ // app start
 		}
 		// sammy
 		_.defer(function(){
-			Sam.loadRoutes(Sammy , self);
-            location.assign("#app-shell");
+			Sam.loadRoutes(Sammy , self).done(function () {
+				//location.assign("#app-shell");
+			});
 		});
     };
 
@@ -56,7 +57,7 @@ define(function(require){ // app start
 
     Application.prototype.ModifyHeader = function (params) {
         var self = this;
-        console.log(params);
+        //console.log(params);
         React.render(<AppHeaderRegion params={params}/> , $("#app-header-div")[0]);
     };
 

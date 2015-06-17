@@ -31,6 +31,7 @@ define(function (require) {
                 // ************** app heroes
                 this.get("#heroes" , function (argument) {
                     self.conductor.append(self, region, self.heroModule);
+                    self.heroModule.ViewHeroList(argument);
                 });
 
                 this.get("#heroes/:heroID/summary" , function (argument) {
@@ -39,6 +40,7 @@ define(function (require) {
                         params = {
                         id: id
                     }
+                    self.conductor.append(self, region, self.heroModule);
                     self.heroModule.ViewHeroSummary(params);
                 });
 
@@ -54,10 +56,12 @@ define(function (require) {
     				self.userVM.registerPage();
     			});
 
-                dfd.resolve();
+                
     		});
 
-            Sammy().run("");
+        Sammy().run("#app-shell");
+        dfd.resolve();
+        return dfd.promise();
 	}
 
 	return Sammy;

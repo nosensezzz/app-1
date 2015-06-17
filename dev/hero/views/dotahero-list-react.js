@@ -38,7 +38,7 @@ define(function (require) {
 		heroClicked: function (hero) {
 			//console.log(hero);
 			var self = this;
-			self.state.root.selectedHero = hero;
+			//self.state.root.selectedHero = hero;
 			location.assign("/#heroes/" + hero.id + "/summary");
 		},
 

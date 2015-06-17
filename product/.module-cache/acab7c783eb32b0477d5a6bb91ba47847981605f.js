@@ -4,9 +4,15 @@ define(function	(require){
 	var heroServiceModule = require('../service/hero-service'),
 		heroService = Object.resolve(heroServiceModule);
 
-	var DotaheroSummary = React.createClass({
+	var DotaheroSummary = React.createClass({displayName: "DotaheroSummary",
+
 		getInitialState: function () {
-			var self = this;
+			var self = this,
+				hero = _.each(self.props.root.heroLocalData, function (hero) {
+					console.log(hero);
+					return (hero.id === self.props.data.id);// wrong
+				});
+				console.log(hero);
 			return {
 				params: self.props.data,
 				root: self.props.root,
@@ -16,8 +22,9 @@ define(function	(require){
 
 		componentWillMount: function (argument) {
 			var self = this;
-			console.log(self.state);
 			self.state.root.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:2, vm:"summary"});
+			console.log(self.state);
+
 		},
 
 		componentDidMount: function (argument) {
@@ -28,9 +35,9 @@ define(function	(require){
 			var self = this;
 			
 			return (
-				<div id="dotahero-summary-div" >
-
-				</div>
+				React.createElement("div", {id: "dotahero-summary-div", className: "module-main-div"}, 
+					React.createElement("div", null)
+				)
 				);
 		}
 	});

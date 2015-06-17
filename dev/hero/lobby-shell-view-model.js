@@ -18,24 +18,22 @@ define(function(require){ // app launch page
 		this.parent = null;
 
 		this.heroLocalData = null;
-		this.heroRankData = null;
+		
 	}
 
 	HeroViewModel.prototype.ready = function _ready(parent , child) {
 		// Initial module...
 		var self = this;
 
-		self.region.$element.attr("id", "user-shell");
-
-		self.reactInit();
+		self.region.$element.attr("id", "hero-shell");
 
 		_.defer(function(){
-			self.sammyInit();
+			//self.sammyInit();
 		});
 		
 	};
 
-	HeroViewModel.prototype.reactInit = function init_react (argument) {
+	HeroViewModel.prototype.ViewHeroList = function init_react (argument) {
 		var self = this,
 			dfd = $.Deferred();
 
@@ -53,12 +51,15 @@ define(function(require){ // app launch page
 			app = Sammy(function(){
 
     		});
-    			
 	};
 
 	HeroViewModel.prototype.ViewHeroSummary = function viewhero (params) {
-		var self = this;
-		React.render(<DotaHeroSummary data={params} root={self} />, self.region.element);
+		var self = this,
+			dfd = $.Deferred();
+		loadDotaheroList(self , dfd);
+		dfd.done(function (heroList) {
+			React.render(<DotaHeroSummary data={params} root={self} />, self.region.element);
+		});
 	};
 
 	function loadDotaheroList(self , dfd) {

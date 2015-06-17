@@ -1,3 +1,6 @@
+/* import */
+@import url('/dev/hero/hero.css');
+
 /* app module */
 #app-div{ height: 100%;width: 100%;}
 .app-header{
@@ -64,28 +67,5 @@
 	height: 40px;
 	width: 40px;
 }
-/* hero module */
-.int{ 
-	background-color: rgb(147, 147, 255)!important; 
-	margin: 1%; 
-}
-.str{ 
-	background-color: rgb(244, 99, 73)!important; 
-	margin: 1%;
-}
-.agi{ 
-	background-color: rgb(148, 244, 138)!important; 
-	margin: 1%;
-}
-.hero-bar-collapsed-i{ left:0; bottom: 0; }
-.hero-filter-block{ 
-	width: 100%;
-	background-color: blue;
-}
 
-.hero-list-block{ 
-	width: 100%;
-}
-.hero-list-block-expand{ 
-	height: 100%; width: 100%;
-}
+

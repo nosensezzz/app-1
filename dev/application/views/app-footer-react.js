@@ -19,7 +19,6 @@ define(function (require) {
 						<FooterButton displayName="heroes" url="/#heroes" />
 						<FooterButton displayName="heroes" url="/#heroes" />	
 					</div>
-					
 				</div>
 
 			);
