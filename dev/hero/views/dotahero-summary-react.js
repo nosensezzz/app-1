@@ -5,8 +5,9 @@ define(function	(require){
 		heroService = Object.resolve(heroServiceModule);
 
 	// react component
-	var IconType = require('./dotahero-summary-icontype-react'),
-		StringTypeOne = require('./dotahero-summary-stringtypeone-react');
+	var RowAttr = require('./dotahero-summary-RowAttr-react'),
+		RowName = require('./dotahero-summary-RowName-react'),
+		RowSkill = require('./dotahero-summary-RowSkill-react');
 
 	var DotaheroSummary = React.createClass({
 
@@ -58,16 +59,32 @@ define(function	(require){
 				<div id="dotahero-summary-div" className="module-main-div" >
 					<div className="container full-size">
 						<div className="hero-summary-img-div">
-							<img className="group list-group-image img-thumbnail hero-summary-img" src={"build/picture/dotahero/" +hero.type+"/"+hero.id+".png"} alt />
+							<img className="group list-group-image img-thumbnail hero-summary-img" 
+							src={"build/picture/dotahero/" +hero.type+"/"+hero.id+".png"} alt />
 						</div>
-						<StringTypeOne string={hero.name} />
-						<StringTypeOne string={hero.shortname} />
-						<IconType icon="build/picture/dotahero/basicIcons/overviewicon_str.png" string={hero.startStr + " + " + hero.StrPerLv} />
-						<IconType icon="build/picture/dotahero/basicIcons/overviewicon_agi.png" string={hero.startAgi + " + " + hero.AgiPerLv} />
-						<IconType icon="build/picture/dotahero/basicIcons/overviewicon_int.png" string={hero.startInt + " + " + hero.IntPerLv} />
-						<IconType icon="build/picture/dotahero/basicIcons/overviewicon_attack.png" string={hero.minDmgLv1 + " - " + hero.maxDmgLv1} />
-						<IconType icon="build/picture/dotahero/basicIcons/overviewicon_armor.png" string={hero.armor} />
-						<IconType icon="build/picture/dotahero/basicIcons/overviewicon_speed.png" string={hero.speed} />
+						<RowName string={hero.name} />
+						<RowName string={hero.shortname} />
+						<RowAttr
+						 icon="build/picture/dotahero/basicIcons/overviewicon_str.png" 
+						 string={hero.startStr + " + " + hero.StrPerLv} />
+						<RowAttr
+						 icon="build/picture/dotahero/basicIcons/overviewicon_agi.png" 
+						 string={hero.startAgi + " + " + hero.AgiPerLv} />
+						<RowAttr
+						 icon="build/picture/dotahero/basicIcons/overviewicon_int.png" 
+						 string={hero.startInt + " + " + hero.IntPerLv} />
+						<RowAttr
+						 icon="build/picture/dotahero/basicIcons/overviewicon_attack.png" 
+						 string={hero.minDmgLv1 + " - " + hero.maxDmgLv1} />
+						<RowAttr
+						 icon="build/picture/dotahero/basicIcons/overviewicon_armor.png" 
+						 string={hero.armor} />
+						<RowAttr
+						 icon="build/picture/dotahero/basicIcons/overviewicon_speed.png" 
+						 string={hero.speed} />
+						 <RowSkill
+						 icon="build/picture/dotahero/skill/agi/2001/1.png" 
+						 string={hero.speed} />
 					</div>
 				</div>
 				);

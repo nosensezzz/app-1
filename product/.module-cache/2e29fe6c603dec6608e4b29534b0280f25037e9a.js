@@ -6,8 +6,8 @@ define(function	(require){
 
 	// react component
 	var RowAttr = require('./dotahero-summary-RowAttr-react'),
-		RowName = require('./dotahero-summary-RowName-react'),
-		RowSkill = require('./dotahero-summary-RowSkill-react');
+		RowName = require('./dotahero-summary-RowName-react');
+
 
 	var DotaheroSummary = React.createClass({displayName: "DotaheroSummary",
 
@@ -59,32 +59,22 @@ define(function	(require){
 				React.createElement("div", {id: "dotahero-summary-div", className: "module-main-div"}, 
 					React.createElement("div", {className: "container full-size"}, 
 						React.createElement("div", {className: "hero-summary-img-div"}, 
-							React.createElement("img", {className: "group list-group-image img-thumbnail hero-summary-img", 
-							src: "build/picture/dotahero/" +hero.type+"/"+hero.id+".png", alt: true})
+							React.createElement("img", {className: "group list-group-image img-thumbnail hero-summary-img", src: "build/picture/dotahero/" +hero.type+"/"+hero.id+".png", alt: true})
 						), 
 						React.createElement(RowName, {string: hero.name}), 
 						React.createElement(RowName, {string: hero.shortname}), 
 						React.createElement(RowAttr, {
-						 icon: "build/picture/dotahero/basicIcons/overviewicon_str.png", 
-						 string: hero.startStr + " + " + hero.StrPerLv}), 
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_str.png", string: hero.startStr + " + " + hero.StrPerLv}), 
 						React.createElement(RowAttr, {
-						 icon: "build/picture/dotahero/basicIcons/overviewicon_agi.png", 
-						 string: hero.startAgi + " + " + hero.AgiPerLv}), 
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_agi.png", string: hero.startAgi + " + " + hero.AgiPerLv}), 
 						React.createElement(RowAttr, {
-						 icon: "build/picture/dotahero/basicIcons/overviewicon_int.png", 
-						 string: hero.startInt + " + " + hero.IntPerLv}), 
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_int.png", string: hero.startInt + " + " + hero.IntPerLv}), 
 						React.createElement(RowAttr, {
-						 icon: "build/picture/dotahero/basicIcons/overviewicon_attack.png", 
-						 string: hero.minDmgLv1 + " - " + hero.maxDmgLv1}), 
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_attack.png", string: hero.minDmgLv1 + " - " + hero.maxDmgLv1}), 
 						React.createElement(RowAttr, {
-						 icon: "build/picture/dotahero/basicIcons/overviewicon_armor.png", 
-						 string: hero.armor}), 
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_armor.png", string: hero.armor}), 
 						React.createElement(RowAttr, {
-						 icon: "build/picture/dotahero/basicIcons/overviewicon_speed.png", 
-						 string: hero.speed}), 
-						 React.createElement(RowSkill, {
-						 icon: "build/picture/dotahero/skill/agi/2001/1.png", 
-						 string: hero.speed})
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_speed.png", string: hero.speed})
 					)
 				)
 				);

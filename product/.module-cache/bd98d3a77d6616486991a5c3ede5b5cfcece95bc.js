@@ -83,7 +83,7 @@ define(function	(require){
 						 icon: "build/picture/dotahero/basicIcons/overviewicon_speed.png", 
 						 string: hero.speed}), 
 						 React.createElement(RowSkill, {
-						 icon: "build/picture/dotahero/skill/agi/2001/1.png", 
+						 icon: "build/picture/dotahero/basicIcons/overviewicon_speed.png", 
 						 string: hero.speed})
 					)
 				)

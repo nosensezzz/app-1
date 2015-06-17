@@ -59,8 +59,7 @@ define(function	(require){
 				React.createElement("div", {id: "dotahero-summary-div", className: "module-main-div"}, 
 					React.createElement("div", {className: "container full-size"}, 
 						React.createElement("div", {className: "hero-summary-img-div"}, 
-							React.createElement("img", {className: "group list-group-image img-thumbnail hero-summary-img", 
-							src: "build/picture/dotahero/" +hero.type+"/"+hero.id+".png", alt: true})
+							React.createElement("img", {className: "group list-group-image img-thumbnail hero-summary-img", src: "build/picture/dotahero/" +hero.type+"/"+hero.id+".png", alt: true})
 						), 
 						React.createElement(RowName, {string: hero.name}), 
 						React.createElement(RowName, {string: hero.shortname}), 
@@ -81,9 +80,6 @@ define(function	(require){
 						 string: hero.armor}), 
 						React.createElement(RowAttr, {
 						 icon: "build/picture/dotahero/basicIcons/overviewicon_speed.png", 
-						 string: hero.speed}), 
-						 React.createElement(RowSkill, {
-						 icon: "build/picture/dotahero/skill/agi/2001/1.png", 
 						 string: hero.speed})
 					)
 				)

@@ -4,7 +4,7 @@ define(function	(require){
 	var heroServiceModule = require('../service/hero-service'),
 		heroService = Object.resolve(heroServiceModule);
 
-	var DivStringOne = React.createClass({displayName: "DivStringOne",
+	var RowSkill = React.createClass({displayName: "RowSkill",
 		getInitialState: function () {
 			return {};
 		},
@@ -19,17 +19,19 @@ define(function	(require){
 
 		render: function () {
 			var self = this,
+				img = self.props.icon,
 				string = self.props.string;
 			
 			return (
 				React.createElement("div", {className: "row hero-summary-row-div"}, 
-					React.createElement("span", {className: "col-xs-4 text-left"}, 
-						string
-					)
+					React.createElement("span", {className: "col-xs-4 full-height"}, 
+						React.createElement("img", {className: "hero-summary-row-skill-icon", src: img})
+					), 
+					React.createElement("span", {className: "col-xs-4"}, string)
 				)
 			);
 		}
 	});
 
-	return DivStringOne;
+	return RowSkill;
 });

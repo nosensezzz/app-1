@@ -58,6 +58,8 @@
 .paddingtopbottom5px{ padding: 5px 0 5px 0; }
 .padding_1p{ padding: 1%;}
 .noPadding{ padding: 0 0 0 0!important;}
+.text-center{ text-align: center;}
+.text-left{ text-align: left;}
 /* icons */
 .smallIcon33{
 	height: 30px;
@@ -67,5 +69,8 @@
 	height: 40px;
 	width: 40px;
 }
-
+.Icon50{
+	height: 50px;
+	width: 50px;
+}
 

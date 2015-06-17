@@ -23,7 +23,7 @@ define(function	(require){
 			
 			return (
 				React.createElement("div", {className: "row hero-summary-row-div"}, 
-					React.createElement("span", {className: "col-xs-4 text-left"}, 
+					React.createElement("span", {className: "col-xs-4 text-center"}, 
 						string
 					)
 				)

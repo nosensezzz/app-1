@@ -35,10 +35,11 @@
 
 .hero-summary-row-div{
 	height: 5%;
+	overflow: hidden;
 }
 
 .hero-summary-row-div-span-forIcon{
-	text-align: center;
+	text-align: left;
 }
 .hero-summary-row-div-icon{
 	height: 100%;
