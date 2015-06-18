@@ -44,5 +44,25 @@ define(function (require) { // handle all user module api call here
 		return dfd.promise();
 	};
 
+	HeroService.prototype.getLocalSkillData = function() {
+		var dfd = $.Deferred();
+
+		$.ajax({
+			type: "GET",
+			dataType: "json",
+			//data:user,
+			url: "product/hero/localJson/skill.json",
+			success: function (data) {
+				dfd.resolve(data);
+			},
+			error: function (data) {
+				dfd.reject(data);
+			},
+			timeout: 1000
+		});
+
+		return dfd.promise();
+	};
+
 	return HeroService;
 });

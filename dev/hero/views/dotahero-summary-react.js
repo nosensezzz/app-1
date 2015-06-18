@@ -33,8 +33,7 @@ define(function	(require){
 		componentWillMount: function (argument) {
 			var self = this;
 			self.state.root.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:2, vm:"summary"});
-			console.log(self.state);
-
+			//console.log(self.state);
 		},
 
 		componentDidMount: function (argument) {
@@ -43,6 +42,7 @@ define(function	(require){
 
 		render: function () {
 			var self = this, typeIcon,
+				root = self.state.root,
 				hero = self.state.hero;
 				switch(hero.type){
 					case "int":
@@ -83,6 +83,8 @@ define(function	(require){
 						 icon="build/picture/dotahero/basicIcons/overviewicon_speed.png" 
 						 string={hero.speed} />
 						 <RowSkill
+						 skills={root.skillLocalData}
+						 hero={hero}
 						 icon="build/picture/dotahero/skill/agi/2001/1.png" 
 						 string={hero.speed} />
 					</div>

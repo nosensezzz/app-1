@@ -18,6 +18,7 @@ define(function(require){ // app launch page
 		this.parent = null;
 
 		this.heroLocalData = null;
+		this.skillLocalData = null;
 		
 	}
 
@@ -38,7 +39,6 @@ define(function(require){ // app launch page
 			dfd = $.Deferred();
 
 		loadDotaheroList(self , dfd);
-
 		dfd.done(function (callback) {
 			self.applicationEvent.SetApplicationHeader.raise({module:"hero" , lv:1, vm:"list"});
 			React.render(<DotaHeroList data={callback} root={self} />, self.region.element);
@@ -58,16 +58,40 @@ define(function(require){ // app launch page
 			dfd = $.Deferred();
 		loadDotaheroList(self , dfd);
 		dfd.done(function (heroList) {
-			React.render(<DotaHeroSummary data={params} root={self} />, self.region.element);
+			loadSkillList(self)
+			.done(function(data){
+				//console.log(data);
+				React.render(<DotaHeroSummary data={params} root={self} />, self.region.element);
+			});
 		});
 	};
 
 	function loadDotaheroList(self , dfd) {
-		self.service.getLocalHeroesData()
-		.then(function (callback) {
-			self.heroLocalData = callback;
+		if(!self.heroLocalData){
+			self.service.getLocalHeroesData()
+			.then(function (callback) {
+				self.heroLocalData = callback;
+				dfd.resolve(self);
+			});
+		} else {
 			dfd.resolve(self);
-		});
+		}
+		
+		
+		return dfd.promise();
+	}
+
+	function loadSkillList (self) {
+		var dfd = $.Deferred();
+		if(!self.skillLocalData){
+			self.service.getLocalSkillData()
+			.then(function (callback) {
+				self.skillLocalData = callback;
+				dfd.resolve(callback);
+			});
+		} else {
+			dfd.resolve();
+		}
 		
 		return dfd.promise();
 	}
