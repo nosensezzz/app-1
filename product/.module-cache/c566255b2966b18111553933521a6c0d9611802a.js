@@ -84,7 +84,9 @@ define(function	(require){
 						 string: hero.speed}), 
 						 React.createElement(RowSkill, {
 						 skills: root.skillLocalData, 
-						 hero: hero})
+						 hero: hero, 
+						 icon: "build/picture/dotahero/skill/" + hero.type +"/" + hero.id + "/1.png", 
+						 string: hero.speed})
 					)
 				)
 				);

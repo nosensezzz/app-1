@@ -11,8 +11,6 @@ define(function (require) {
 
 		Back_lv2tolv1: function (from) {
 			var self = this;
-			console.log(this);
-			console.log(from);
 			if(!window.history.back()){
 				//alert();
 			}

@@ -84,9 +84,7 @@ define(function	(require){
 						 string={hero.speed} />
 						 <RowSkill
 						 skills={root.skillLocalData}
-						 hero={hero}
-						 icon="build/picture/dotahero/skill/agi/2001/1.png" 
-						 string={hero.speed} />
+						 hero={hero} />
 					</div>
 				</div>
 				);

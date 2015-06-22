@@ -4,7 +4,7 @@ define(function	(require){
 	var heroServiceModule = require('../service/hero-service'),
 		heroService = Object.resolve(heroServiceModule);
 
-	var RowSkill = React.createClass({
+	var RowSkill = React.createClass({displayName: "RowSkill",
 		getInitialState: function () {
 			var self = this,
 				myId = self.props.hero.id;
@@ -32,32 +32,32 @@ define(function	(require){
 			
 			var passive, pierceImmunity;
 			return (
-				<div>
-				{self.state.myskills.map(function (skill , i) {
+				React.createElement("div", null, 
+				self.state.myskills.map(function (skill , i) {
 						if(skill.pierce === true){
-							pierceImmunity = (<span className="row"> Pierce Immunity : True</span>);
+							pierceImmunity = (React.createElement("span", {className: "row"}, " Pierce Immunity : True"));
 						} else if(skill.pierce === false){
 							pierceImmunity = null;
 						}
 
 						return(
-							<div className="row hero-summary-skill-row">
-								<div className="col-xs-4 full-height" >
-									<img className="hero-summary-row-skill-icon Icon50" 
-									src={"build/picture/dotahero/skill/" + hero.type +"/" + hero.id + "/" + (i+1) +".png"} />
-								</div>
-								<div className="col-xs-8" >
+							React.createElement("div", {className: "row hero-summary-skill-row"}, 
+								React.createElement("div", {className: "col-xs-4 full-height"}, 
+									React.createElement("img", {className: "hero-summary-row-skill-icon Icon50", 
+									src: "build/picture/dotahero/skill/" + hero.type +"/" + hero.id + "/1.png"})
+								), 
+								React.createElement("div", {className: "col-xs-8"}, 
 
-									<span className="row"> {skill.name} </span>
-									<span className="row"> {skill.ability} </span>
-									{pierceImmunity}
-								</div>
+									React.createElement("span", {className: "row"}, " ", skill.name, " "), 
+									React.createElement("span", {className: "row"}, " ", skill.ability, " "), 
+									pierceImmunity
+								)
 
-							</div>
+							)
 						);
 					})
-				}
-				</div>
+				
+				)
 			);
 		}
 	});
